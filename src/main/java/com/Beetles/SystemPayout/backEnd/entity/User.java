@@ -9,7 +9,7 @@ Classe de criação de usuários normal, aqui é onde está a os atributos do us
 */
 
 @Entity  //Essa anotação faz o SpringBoot reconhecer a Classe com uma entidade
-@Table(name="NormalUsers") //Essa anotação ja cria uma tabela no banco de dados com o nome indicado
+@Table(name="normalusers") //Essa anotação ja cria uma tabela no banco de dados com o nome indicado
 public class User {
     /*
     Essa abaixo é uma geração automatica do Id do usuário
