@@ -1,7 +1,7 @@
 package com.Beetles.SystemPayout.backEnd.domain;
 
 import jakarta.persistence.*;
-import lombok.NonNull;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -16,6 +16,10 @@ Classe de criação de usuários normal, aqui é onde está a os atributos do us
 @Table(name="alunos", uniqueConstraints = {
         @UniqueConstraint(columnNames = "telefone")
 }) //Essa anotação ja cria uma tabela no banco de dados com o nome indicado, E o UniqueConstrains torna um atributo Unico(não pode ter um igual)
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
     /*
     Essa abaixo é uma geração automatica do Id do usuário
@@ -36,65 +40,6 @@ public class User {
     private LocalDate diaVencimento;
     private LocalDate dataProximoVencimento;
     private LocalDate dataCadastro;
-
-    public User() {
-    }
-
-    public Integer getAlunoId() {
-        return alunoId;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public Planos getPlanoescolhidoId() {
-        return planoEscolhido;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public boolean isPrimeiroAcesso() {
-        return primeiroAcesso;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public LocalDate getDiaVencimento() {
-        return diaVencimento;
-    }
-
-    public LocalDate getDataProximoVencimento() {
-        return dataProximoVencimento;
-    }
-
-    public LocalDate getDataCadastro() {
-        return dataCadastro;
-    }
-
-    public void onCreated(){
-        this.dataCadastro = LocalDate.now();
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public void setPlanoEscolhido(Planos planoEscolhido) {
-        this.planoEscolhido = planoEscolhido;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public void setNome(@NonNull String nome) {
-        this.nome = nome;
-    }
 
     public void transformarTelefone() {
         this.telefone = this.telefone + "@ctjsfightuba.com.br";

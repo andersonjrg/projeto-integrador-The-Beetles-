@@ -1,13 +1,17 @@
 package com.Beetles.SystemPayout.backEnd.domain;
 
 import jakarta.persistence.*;
-import lombok.NonNull;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "historico_pagamento")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Historico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,47 +25,4 @@ public class Historico {
     private LocalDateTime dataSolicitacao;
     private LocalDateTime dataConfirmacao;
 
-    public @NonNull Integer getHistoricoId() {
-        return historicoId;
-    }
-
-    public User getHistoricoAlunoId() {
-        return historicoAlunoId;
-    }
-
-    public BigDecimal getValorCobrado() {
-        return valorCobrado;
-    }
-
-    public String getStatusPagamento() {
-        return statusPagamento;
-    }
-
-    public LocalDateTime getDataSolicitacao() {
-        return dataSolicitacao;
-    }
-
-    public LocalDateTime getDataConfirmacao() {
-        return dataConfirmacao;
-    }
-
-    public void setValorCobrado(BigDecimal valorCobrado) {
-        this.valorCobrado = valorCobrado;
-    }
-
-    public void setDataSolicitacao(LocalDateTime dataSolicitacao) {
-        this.dataSolicitacao = dataSolicitacao;
-    }
-
-    public void setDataConfirmacao(LocalDateTime dataConfirmacao) {
-        this.dataConfirmacao = dataConfirmacao;
-    }
-
-    public void setHistoricoAlunoId(User historicoAlunoId) {
-        this.historicoAlunoId = historicoAlunoId;
-    }
-
-    public void setStatusPagamento(String statusPagamento) {
-        this.statusPagamento = statusPagamento;
-    }
 }
