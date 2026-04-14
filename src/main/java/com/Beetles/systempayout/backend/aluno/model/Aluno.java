@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 
 
@@ -28,9 +29,9 @@ public class Aluno {
     Essa abaixo é uma geração automatica do Id do usuário
     */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "aluno_id",nullable = false, unique = true)//Não permite o atributo ser null
-    private Integer alunoId;
+    private UUID alunoId;
     @Column(unique = true, nullable = false)
     private String telefone;
     @Column(nullable = false)

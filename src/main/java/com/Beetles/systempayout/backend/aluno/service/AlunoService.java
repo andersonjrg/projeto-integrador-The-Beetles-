@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 //Essa anotação faz o SpringBoot reconhecer a Classe como um componente de serviço, ou seja, é onde fica a lógica de negócio da aplicação, aqui é onde ficam os metodos que fazem as operações com o banco de dados, usando o Repositorio e o Mapper para converter os objetos de Aluno para AlunoDTO e vice versa
@@ -36,7 +37,7 @@ public class AlunoService {
 
     // Já esse metodo é para ver um usuário pelo Id dele
     @Transactional(readOnly = true)
-    public AlunoDTO showUserById(/* Aqui é onde colocamos os parametros do metodo */ Integer id) {
+    public AlunoDTO showUserById(/* Aqui é onde colocamos os parametros do metodo */ UUID id) {
         Optional<Aluno> alunoID = repository.findById(id);
         return alunoID.map(alunoMapper::map).orElse(null);
     }
@@ -55,7 +56,7 @@ public class AlunoService {
     // Esse é para deletar um usuário do sistema pelo Id
 
     @Transactional
-    public void deleteUserById(Integer id) {
+    public void deleteUserById(UUID id) {
         if (!repository.existsById(id)) {
             throw new RuntimeException("Não foi possível deletar o Usuário: Id invalido");
         }
@@ -64,7 +65,7 @@ public class AlunoService {
     // Esse é para atualizar os dados do usuário
 
     @Transactional
-    public AlunoDTO updateUser(Integer id, AlunoDTO alunoDTO) {
+    public AlunoDTO updateUser(UUID id, AlunoDTO alunoDTO) {
         Aluno alunoExist = repository.findById(id)
             .orElseThrow(() -> new RuntimeException("Não foi possível atualizar o Usuário: Id inválido"));
 

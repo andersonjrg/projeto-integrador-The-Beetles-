@@ -7,9 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/alunos")
 
 public class AlunoController {
     private final AlunoService alunoService;
@@ -18,20 +19,20 @@ public class AlunoController {
         this.alunoService = alunoService;
     }
 
-    @PostMapping("/save")
+    @PostMapping
     public ResponseEntity<AlunoDTO> saveUser(@RequestBody AlunoDTO alunoDTO){
             AlunoDTO savedAluno = alunoService.saveUser(alunoDTO);
             return new ResponseEntity<>(savedAluno, HttpStatus.CREATED);
     }
 
-    @GetMapping("/getall")
+    @GetMapping
     public ResponseEntity<List<AlunoDTO>> getAllUsers(){
             List<AlunoDTO> aluno = alunoService.showUsers();
             return ResponseEntity.ok(aluno);
     }
 
-    @GetMapping("/getbyid/{id}")
-    public ResponseEntity<AlunoDTO> getUserById(@PathVariable Integer id){
+    @GetMapping("/{id}")
+    public ResponseEntity<AlunoDTO> getUserById(@PathVariable UUID id){
             AlunoDTO aluno = alunoService.showUserById(id);
             if (aluno == null) {
                 return ResponseEntity.notFound().build();
@@ -39,14 +40,14 @@ public class AlunoController {
             return ResponseEntity.ok(aluno);
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<AlunoDTO> updateUser(@PathVariable Integer id, @RequestBody AlunoDTO aluno){
+    @PutMapping("/{id}")
+    public ResponseEntity<AlunoDTO> updateUser(@PathVariable UUID id, @RequestBody AlunoDTO aluno){
             AlunoDTO alunoUp = alunoService.updateUser(id, aluno);
             return new ResponseEntity<>(alunoUp, HttpStatus.OK);
     }
 
-    @DeleteMapping("/deletebyid/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Integer id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable UUID id){
             alunoService.deleteUserById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
