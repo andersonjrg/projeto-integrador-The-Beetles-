@@ -19,10 +19,12 @@ Classe de criação de usuários normal, aqui é onde está a os atributos do us
 @Table(name="alunos", uniqueConstraints = {
         @UniqueConstraint(columnNames = "telefone")
 }) //Essa anotação ja cria uma tabela no banco de dados com o nome indicado, E o UniqueConstrains torna um atributo Unico(não pode ter um igual)
+@Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Aluno {
     /*
     Essa abaixo é uma geração automatica do Id do usuário
@@ -32,7 +34,9 @@ public class Aluno {
     @Column(name = "aluno_id",nullable = false, unique = true)//Não permite o atributo ser null
     private UUID alunoId;
     @Column(unique = true, nullable = false)
-    private String telefone;
+    private String email;
+    @Column(nullable = false)
+    private String senha;
     @Column(nullable = false)
     private String nome;
     @ManyToOne
@@ -48,17 +52,14 @@ public class Aluno {
     @CreationTimestamp
     private LocalDateTime dataCadastro;
 
-    public void transformarTelefone() {
-        if(this.telefone != null && !this.telefone.contains("@")) {
-            this.telefone = this.telefone + "@ctjsfightuba.com.br";
-        }
-    }
-
     public void calcularVencimento(){
         if(this.dataInicioPlano == null){
             throw new RuntimeException("O usuário não possui um plano cadastrado");
         }else{
             diaVencimento = dataInicioPlano.plusMonths(1);
         }
+    }
+    public void proximoVencimento(){
+        LocalDateTime vencimentoProximo = this.diaVencimento.plusMonths(1);
     }
 }

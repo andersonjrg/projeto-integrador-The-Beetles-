@@ -15,6 +15,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString(exclude = "alunos")
 public class Plano {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

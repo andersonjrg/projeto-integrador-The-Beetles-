@@ -17,6 +17,7 @@ import static com.Beetles.systempayout.backend.shared.utils.DateTimeLocal.pegarH
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Historico {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

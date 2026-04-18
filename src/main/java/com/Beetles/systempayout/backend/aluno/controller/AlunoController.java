@@ -1,6 +1,9 @@
 package com.Beetles.systempayout.backend.aluno.controller;
 
-import com.Beetles.systempayout.backend.aluno.DTO.AlunoDTO;
+import com.Beetles.systempayout.backend.aluno.controller.mapper.AlunoMapper;
+import com.Beetles.systempayout.backend.aluno.controller.request.AlunoRequest;
+import com.Beetles.systempayout.backend.aluno.controller.response.AlunoResponse;
+import com.Beetles.systempayout.backend.aluno.model.Aluno;
 import com.Beetles.systempayout.backend.aluno.service.AlunoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,42 +16,44 @@ import java.util.UUID;
 @RequestMapping("/alunos")
 
 public class AlunoController {
-    private final AlunoService alunoService;
+    private final AlunoService service;
 
-    public AlunoController(AlunoService alunoService) {
-        this.alunoService = alunoService;
+    public AlunoController(AlunoService service) {
+        this.service = service;
     }
 
     @PostMapping
-    public ResponseEntity<AlunoDTO> saveUser(@RequestBody AlunoDTO alunoDTO){
-            AlunoDTO savedAluno = alunoService.saveUser(alunoDTO);
-            return new ResponseEntity<>(savedAluno, HttpStatus.CREATED);
+    public ResponseEntity<AlunoResponse> saveUser(@RequestBody AlunoRequest request){
+        Aluno alunoNovo = AlunoMapper.mapRequest(request);
+        Aluno alunoSalvo = service.saveUser(alunoNovo);
+        return new ResponseEntity<>(AlunoMapper.mapResponse(alunoSalvo), HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<List<AlunoDTO>> getAllUsers(){
-            List<AlunoDTO> aluno = alunoService.showUsers();
-            return ResponseEntity.ok(aluno);
+    public ResponseEntity<List<AlunoResponse>> getAllUsers(){
+        List<Aluno> alunos = service.listUsers();
+        List<AlunoResponse> response = alunos.stream()
+                .map(AlunoMapper::mapResponse)
+                .toList();
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AlunoDTO> getUserById(@PathVariable UUID id){
-            AlunoDTO aluno = alunoService.showUserById(id);
-            if (aluno == null) {
-                return ResponseEntity.notFound().build();
-            }
-            return ResponseEntity.ok(aluno);
+    public ResponseEntity<AlunoResponse> getUserById(@PathVariable UUID id){
+            Aluno aluno = service.listUserById(id);
+            return ResponseEntity.ok(AlunoMapper.mapResponse(aluno));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<AlunoDTO> updateUser(@PathVariable UUID id, @RequestBody AlunoDTO aluno){
-            AlunoDTO alunoUp = alunoService.updateUser(id, aluno);
-            return new ResponseEntity<>(alunoUp, HttpStatus.OK);
+    public ResponseEntity<AlunoResponse> updateUser(@PathVariable UUID id, @RequestBody AlunoRequest request){
+        Aluno aluno = AlunoMapper.mapRequest(request);
+        Aluno response = service.updateUser(id, aluno);
+        return ResponseEntity.ok(AlunoMapper.mapResponse(response));
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable UUID id){
-            alunoService.deleteUserById(id);
-            new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public ResponseEntity<Void> deleteUser(@PathVariable UUID id){
+            service.deleteUserById(id);
+            return ResponseEntity.noContent().build();
         }
 }
