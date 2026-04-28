@@ -22,39 +22,39 @@ public class PlanoController {
         this.service = service;
     }
 
-    @PostMapping
-    public ResponseEntity<PlanoResponse> salvarPlano(@RequestBody PlanoRequest plano) {
-        Plano planoSalvo = service.criarPlano(PlanoMapper.mapRequest(plano));
-        PlanoResponse planoResponse = PlanoMapper.mapResponse(planoSalvo);
-        return new ResponseEntity<>(planoResponse, HttpStatus.CREATED);
+    @PostMapping("/salvar")
+    public ResponseEntity<PlanoResponse> salvarPlano(@RequestBody PlanoRequest request) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(PlanoMapper.mapResponse(service.criarPlano(PlanoMapper.mapRequest(request))));
     }
 
-    @GetMapping
+    @GetMapping("/buscar")
     public ResponseEntity<List<PlanoResponse>> mostrarPlanos() {
-        List<Plano> plano = service.mostrarTodosPlanos();
-        List<PlanoResponse> planoResponses = plano
-                .stream().map(PlanoMapper::mapResponse)
-                .toList();
-        return ResponseEntity.ok(planoResponses);
+        return ResponseEntity.ok(
+                service.mostrarTodosPlanos()
+                        .stream()
+                        .map(PlanoMapper::mapResponse)
+                        .toList()
+        );
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/buscar/{id}")
     public ResponseEntity<PlanoResponse> verPlanoEspecifico(@PathVariable UUID id) {
-        Plano plano = service.mostrarPlanoEspecificoPeloId(id);
-        PlanoResponse planoResponse = PlanoMapper.mapResponse(plano);
-        return new ResponseEntity<>(planoResponse, HttpStatus.FOUND);
+        return ResponseEntity.ok(
+                PlanoMapper.mapResponse(service.mostrarPlanoEspecificoPeloId(id))
+        );
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/atualizar/{id}")
     public ResponseEntity<PlanoResponse> atualizarPlano(@RequestBody PlanoRequest plano, @PathVariable UUID id) {
         Plano planoAnterior = service.modificarPlano(PlanoMapper.mapRequest(plano), id);
         PlanoResponse planoAtualizado = PlanoMapper.mapResponse(planoAnterior);
         return new ResponseEntity<>(planoAtualizado, HttpStatus.ACCEPTED);
     }
 
-    @DeleteMapping("/{id}")
-    public void apagarPlano(@PathVariable UUID id){
+    @DeleteMapping("/deletar/{id}")
+    public ResponseEntity<Void> apagarPlano(@PathVariable UUID id){
         service.deletarPlano(id);
-        new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return ResponseEntity.noContent().build();
     }
 }

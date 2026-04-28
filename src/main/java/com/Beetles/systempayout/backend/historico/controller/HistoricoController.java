@@ -22,26 +22,24 @@ public class HistoricoController {
 
     @PostMapping("/salvar")
     public ResponseEntity<HistoricoResponse> salvar(@RequestBody HistoricoRequest historico){
-        Historico historicoCriado = service.salvarHistorico(HistoricoMapper.mapRequest(historico));
-        HistoricoResponse historicoResponse = HistoricoMapper.mapResponse(historicoCriado);
-        return new ResponseEntity<>(historicoResponse, HttpStatus.CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(HistoricoMapper.mapResponse(service.salvarHistorico(HistoricoMapper.mapRequest(historico))));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<HistoricoResponse> buscar(@PathVariable UUID id){
-        Historico historico = service.verHistoricoId(id);
-        return new ResponseEntity<>(HistoricoMapper.mapResponse(historico), HttpStatus.FOUND);
-    }
+        return ResponseEntity.ok(HistoricoMapper.mapResponse(service.verHistoricoId(id)));
+        }
 
     @PostMapping("/solicitacao/{id}")
     public ResponseEntity<HistoricoResponse> solicitar(@PathVariable UUID id){
-        Historico historicoSolicitacao = service.registrarDataDeSolicitacao(id);
-        return new ResponseEntity<>(HistoricoMapper.mapResponse(historicoSolicitacao), HttpStatus.ACCEPTED);
+        return ResponseEntity.status(HttpStatus.ACCEPTED)
+                .body(HistoricoMapper.mapResponse(service.registrarDataDeSolicitacao(id)));
     }
 
     @PostMapping("/confirmar/{id}")
     public ResponseEntity<HistoricoResponse> confirmar(@PathVariable UUID id){
-        Historico historico = service.registrarDataDeConfirmacao(id);
-        return new ResponseEntity<>(HistoricoMapper.mapResponse(historico), HttpStatus.ACCEPTED);
+        return ResponseEntity.status(HttpStatus.ACCEPTED)
+                .body(HistoricoMapper.mapResponse(service.registrarDataDeConfirmacao(id)));
     }
 }

@@ -12,9 +12,9 @@ public class AlunoMapper{
         return Aluno
                 .builder()
                 .email(request.email())
-                .senha(request.senha())
                 .nome(request.nome())
-                .planoEscolhidoId(request.planoEscolhidoId())
+                .senha(request.senha())
+                .planoEscolhidoId(request.plano())
                 .build();
     }
     public static AlunoResponse mapResponse(Aluno aluno){

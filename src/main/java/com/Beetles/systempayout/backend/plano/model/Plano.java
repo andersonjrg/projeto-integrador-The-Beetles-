@@ -22,19 +22,26 @@ import static com.Beetles.systempayout.backend.shared.utils.DateTimeLocal.pegarH
 public class Plano {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(nullable = false, unique = true, name = "plano_id")
+    @Column(unique = true, name = "plano_id")
     private UUID planoId;
+
     @Column(nullable = false)
     private String nome;
+
     @OneToMany(mappedBy = "planoEscolhidoId",fetch = FetchType.LAZY)
     private Set<Aluno> alunos;
+
     @Column(nullable = false)
     private String categoria;
+
     @Column(nullable = false)
     private int frequenciaAulas;
+
     @Column(precision = 10, scale = 2)
     private BigDecimal valor;
+
     private boolean ativo;
+
     @Column(updatable = false)
     private LocalDateTime dataCriacao;
 

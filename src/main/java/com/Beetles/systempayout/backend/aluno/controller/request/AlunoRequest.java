@@ -6,7 +6,7 @@ import lombok.Builder;
 
 @Builder
 public record AlunoRequest(String email,
-                           String nome,
                            String senha,
-                           Plano planoEscolhidoId) {
+                           String nome,
+                           Plano plano) {
 }

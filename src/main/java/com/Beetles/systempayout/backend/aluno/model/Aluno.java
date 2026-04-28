@@ -8,17 +8,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-
-
-
-/*
-Classe de criação de usuários normal, aqui é onde está a os atributos do usuário
-*/
-
-@Entity  //Essa anotação faz o SpringBoot reconhecer a Classe com uma entidade
-@Table(name="alunos", uniqueConstraints = {
-        @UniqueConstraint(columnNames = "telefone")
-}) //Essa anotação ja cria uma tabela no banco de dados com o nome indicado, E o UniqueConstrains torna um atributo Unico(não pode ter um igual)
+@Entity
+@Table(name="alunos")
 @Builder
 @Getter
 @Setter
@@ -26,28 +17,39 @@ Classe de criação de usuários normal, aqui é onde está a os atributos do us
 @NoArgsConstructor
 @ToString
 public class Aluno {
-    /*
-    Essa abaixo é uma geração automatica do Id do usuário
-    */
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "aluno_id",nullable = false, unique = true)//Não permite o atributo ser null
+    @Column(name = "aluno_id",nullable = false, unique = true)
     private UUID alunoId;
+
     @Column(unique = true, nullable = false)
     private String email;
-    @Column(nullable = false)
-    private String senha;
+
+    @Column(unique = true, nullable = false)
+    private String numero;
+
     @Column(nullable = false)
     private String nome;
+
+    @Column(nullable = false, length = 20)
+    private String senha;
+
     @ManyToOne
-    @JoinColumn(name = "plano_id")
+    @JoinColumn(name = "plano_escolhido_id", nullable = true)
     private Plano planoEscolhidoId;
+
     private boolean primeiroAcesso = true;
+
     private String status;
+
     private LocalDateTime diaVencimento;
+
     private LocalDateTime dataProximoVencimento;
+
     @CreationTimestamp
     private LocalDateTime dataInicioPlano;
+
     @Column(updatable = false)
     @CreationTimestamp
     private LocalDateTime dataCadastro;
@@ -60,6 +62,6 @@ public class Aluno {
         }
     }
     public void proximoVencimento(){
-        LocalDateTime vencimentoProximo = this.diaVencimento.plusMonths(1);
+        this.dataProximoVencimento = this.diaVencimento.plusMonths(1);
     }
 }

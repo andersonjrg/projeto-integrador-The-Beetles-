@@ -31,9 +31,8 @@ public class AlunoService {
     }
 
 
-    @Transactional
-    public Aluno saveUser(Aluno alunoSalvo) {
-        return repository.save(alunoSalvo);
+    public Aluno saveUser(Aluno aluno) {
+        return repository.save(aluno);
     }
 
 

@@ -22,7 +22,7 @@ import static com.Beetles.systempayout.backend.shared.utils.DateTimeLocal.pegarH
 public class Historico {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(nullable = false, unique = true)
+    @Column(name = "historico_id", nullable = false)
     private UUID historicoId;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/alunos")
@@ -22,36 +23,32 @@ public class AlunoController {
         this.service = service;
     }
 
-    @PostMapping
-    public ResponseEntity<AlunoResponse> saveUser(@RequestBody AlunoRequest request){
-        Aluno alunoNovo = AlunoMapper.mapRequest(request);
-        Aluno alunoSalvo = service.saveUser(alunoNovo);
-        return new ResponseEntity<>(AlunoMapper.mapResponse(alunoSalvo), HttpStatus.CREATED);
+    @PostMapping("/save")
+    public ResponseEntity<AlunoResponse> saveUser(@RequestBody AlunoRequest request) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(AlunoMapper.mapResponse((service.saveUser(AlunoMapper.mapRequest(request)))));
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<AlunoResponse>> getAllUsers(){
-        List<Aluno> alunos = service.listUsers();
-        List<AlunoResponse> response = alunos.stream()
+        return ResponseEntity.status(HttpStatus.OK).body(
+                service.listUsers()
+                .stream()
                 .map(AlunoMapper::mapResponse)
-                .toList();
-        return ResponseEntity.ok(response);
+                .toList());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/buscar/{id}")
     public ResponseEntity<AlunoResponse> getUserById(@PathVariable UUID id){
-            Aluno aluno = service.listUserById(id);
-            return ResponseEntity.ok(AlunoMapper.mapResponse(aluno));
+            return ResponseEntity.ok(AlunoMapper.mapResponse(service.listUserById(id)));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<AlunoResponse> updateUser(@PathVariable UUID id, @RequestBody AlunoRequest request){
-        Aluno aluno = AlunoMapper.mapRequest(request);
-        Aluno response = service.updateUser(id, aluno);
-        return ResponseEntity.ok(AlunoMapper.mapResponse(response));
+        return ResponseEntity.ok(AlunoMapper.mapResponse(service.updateUser(id, AlunoMapper.mapRequest(request))));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("deletar/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable UUID id){
             service.deleteUserById(id);
             return ResponseEntity.noContent().build();
