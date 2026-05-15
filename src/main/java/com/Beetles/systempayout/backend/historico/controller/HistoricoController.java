@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -32,7 +33,17 @@ public class HistoricoController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<HistoricoResponse> buscar(@PathVariable UUID id){
         return ResponseEntity.ok(HistoricoMapper.mapResponse(service.verHistoricoId(id)));
-        }
+    }
+
+    @GetMapping("/findAll")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<List<HistoricoResponse>> buscarAll(@RequestParam int paginas, @RequestParam int itens){
+        return ResponseEntity.status(HttpStatus.OK).body(
+                service.verTodosHistoricos(paginas, itens)
+                        .stream()
+                        .map(HistoricoMapper::mapResponse)
+                        .toList());
+    }
 
     @PostMapping("/solicitacao/{id}")
     @PreAuthorize("hasRole('ADMIN')")

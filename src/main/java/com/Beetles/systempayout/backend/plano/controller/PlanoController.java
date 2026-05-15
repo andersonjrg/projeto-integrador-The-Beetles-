@@ -30,9 +30,9 @@ public class PlanoController {
     }
 
     @GetMapping("/buscar")
-    public ResponseEntity<List<PlanoResponse>> mostrarPlanos() {
+    public ResponseEntity<List<PlanoResponse>> mostrarPlanos(@RequestParam int paginas, @RequestParam int itens) {
         return ResponseEntity.ok(
-                service.mostrarTodosPlanos()
+                service.mostrarTodosPlanos(paginas, itens)
                         .stream()
                         .map(PlanoMapper::mapResponse)
                         .toList()

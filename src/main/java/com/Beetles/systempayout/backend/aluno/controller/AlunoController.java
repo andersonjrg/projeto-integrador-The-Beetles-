@@ -22,9 +22,9 @@ public class AlunoController {
 
     @GetMapping("/all")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<List<AlunoResponse>> getAllUsers(){
+    public ResponseEntity<List<AlunoResponse>> getAllUsers(@RequestParam int paginas,@RequestParam int itens){
         return ResponseEntity.status(HttpStatus.OK).body(
-                service.listUsers()
+                service.listUsers(paginas, itens)
                 .stream()
                 .map(AlunoMapper::mapResponse)
                 .toList());

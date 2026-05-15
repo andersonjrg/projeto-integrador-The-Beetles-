@@ -2,6 +2,9 @@ package com.Beetles.systempayout.backend.plano.service;
 
 import com.Beetles.systempayout.backend.plano.model.Plano;
 import com.Beetles.systempayout.backend.plano.repository.PlanoRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,8 +26,10 @@ public class PlanosService {
         return repository.save(plano);
     }
 
-    public List<Plano> mostrarTodosPlanos(){
-        return repository.findAll();
+    public List<Plano> mostrarTodosPlanos(int paginas, int itens){
+        Pageable pageable = PageRequest.of(paginas, itens);
+        Page<Plano> planoPage = repository.findAll(pageable);
+        return planoPage.getContent();
     }
 
     public Plano mostrarPlanoEspecificoPeloId(UUID id){

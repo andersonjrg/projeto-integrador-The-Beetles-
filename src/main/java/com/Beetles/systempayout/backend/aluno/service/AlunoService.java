@@ -3,6 +3,9 @@ package com.Beetles.systempayout.backend.aluno.service;
 import com.Beetles.systempayout.backend.aluno.model.Aluno;
 import com.Beetles.systempayout.backend.aluno.repository.AlunoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,8 +25,10 @@ public class AlunoService{
     private final PasswordEncoder passwordEncoder;
 
     @Transactional(readOnly = true)
-    public List<Aluno> listUsers() {
-        return repository.findAll();
+    public List<Aluno> listUsers(int paginas, int itens) {
+        Pageable pageable = PageRequest.of(paginas, itens);
+        Page<Aluno> alunoPage = repository.findAll(pageable);
+        return alunoPage.getContent();
     }
 
 
