@@ -1,16 +1,16 @@
 package com.Beetles.systempayout.backend.historico.controller;
 
-import com.Beetles.systempayout.backend.historico.controller.Mapper.HistoricoMapper;
 import com.Beetles.systempayout.backend.historico.controller.Request.HistoricoRequest;
 import com.Beetles.systempayout.backend.historico.controller.Response.HistoricoResponse;
 import com.Beetles.systempayout.backend.historico.service.HistoricoService;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -24,38 +24,41 @@ public class HistoricoController {
 
     @PostMapping("/salvar")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<HistoricoResponse> salvar(@Valid @RequestBody HistoricoRequest historico){
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(HistoricoMapper.mapResponse(service.salvarHistorico(HistoricoMapper.mapRequest(historico))));
+    public ResponseEntity<HistoricoResponse> salvar(@Valid @RequestBody HistoricoRequest request){
+        var historico = service.salvarHistorico(request);
+        var response = HistoricoResponse.toHistoricoResponse(historico);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<HistoricoResponse> buscar(@PathVariable UUID id){
-        return ResponseEntity.ok(HistoricoMapper.mapResponse(service.verHistoricoId(id)));
+        var request = service.verHistoricoId(id);
+        var response = HistoricoResponse.toHistoricoResponse(request);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/findAll")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<List<HistoricoResponse>> buscarAll(@RequestParam int paginas, @RequestParam int itens){
-        return ResponseEntity.status(HttpStatus.OK).body(
-                service.verTodosHistoricos(paginas, itens)
-                        .stream()
-                        .map(HistoricoMapper::mapResponse)
-                        .toList());
+    public ResponseEntity<Page<HistoricoResponse>> buscarAll(@RequestParam Pageable pageable){
+        var response = service.verTodosHistoricos(pageable)
+                .map(HistoricoResponse::toHistoricoResponse);
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/solicitacao/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<HistoricoResponse> solicitar(@PathVariable UUID id){
-        return ResponseEntity.status(HttpStatus.ACCEPTED)
-                .body(HistoricoMapper.mapResponse(service.registrarDataDeSolicitacao(id)));
+        var historico = service.registrarDataDeSolicitacao(id);
+        var response = HistoricoResponse.toHistoricoResponse(historico);
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/confirmar/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<HistoricoResponse> confirmar(@PathVariable UUID id){
-        return ResponseEntity.status(HttpStatus.ACCEPTED)
-                .body(HistoricoMapper.mapResponse(service.registrarDataDeConfirmacao(id)));
+        var historico = service.registrarDataDeConfirmacao(id);
+        var response = HistoricoResponse.toHistoricoResponse(historico);
+        return ResponseEntity.ok(response);
     }
 }

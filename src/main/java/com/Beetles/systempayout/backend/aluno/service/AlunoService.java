@@ -1,20 +1,16 @@
 package com.Beetles.systempayout.backend.aluno.service;
 
+import com.Beetles.systempayout.backend.aluno.controller.request.AlunoRequest;
 import com.Beetles.systempayout.backend.aluno.model.Aluno;
 import com.Beetles.systempayout.backend.aluno.repository.AlunoRepository;
+import com.Beetles.systempayout.backend.shared.exception.IdNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -25,23 +21,27 @@ public class AlunoService{
     private final PasswordEncoder passwordEncoder;
 
     @Transactional(readOnly = true)
-    public List<Aluno> listUsers(int paginas, int itens) {
-        Pageable pageable = PageRequest.of(paginas, itens);
-        Page<Aluno> alunoPage = repository.findAll(pageable);
-        return alunoPage.getContent();
+    public Page<Aluno> listUsers(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
 
     @Transactional(readOnly = true)
     public Aluno listUserById(UUID id) {
         return repository.findById(id)
-                .orElseThrow(()-> new RuntimeException("Id não encontrado"));
+                .orElseThrow(()-> new IdNotFoundException(id));
     }
 
     @Transactional
-    public Aluno registerUser(Aluno aluno) {
-        String senha = aluno.getSenha();
-        aluno.setSenha(passwordEncoder.encode(senha));
+    public Aluno registerUser(AlunoRequest request) {
+        Aluno aluno = new Aluno();
+
+        aluno.setNome(request.nome());
+        aluno.setEmail(request.email());
+        aluno.setNumero(request.numero());
+        aluno.setSenha(passwordEncoder.encode(request.senha()));
+        aluno.setPlanoEscolhidoId(request.plano());
+
         return repository.save(aluno);
     }
 
@@ -49,33 +49,32 @@ public class AlunoService{
     @Transactional
     public void deleteUserById(UUID id) {
         if (!repository.existsById(id)) {
-            throw new RuntimeException("Não foi possível deletar o Usuário: Id invalido");
+            throw new IdNotFoundException(id);
         }
         repository.deleteById(id);
     }
 
     @Transactional
-    public Aluno updateUser(UUID id, Aluno aluno) {
-        Aluno alunoExist = repository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Não foi possível atualizar o Usuário: Id inválido"));
+    public Aluno updateUser(UUID id, AlunoRequest request) {
+        Aluno aluno = repository.findById(id)
+            .orElseThrow(() -> new IdNotFoundException(id));
 
-        if (aluno.getNome() != null) {
-            alunoExist.setNome(aluno.getNome());
+        if (request.nome() != null) {
+            aluno.setNome(request.nome());
         }
-        if (aluno.getNumero() != null){
-            alunoExist.setNumero(aluno.getNumero());
+        if (request.numero() != null){
+            aluno.setNumero(request.numero());
         }
-        if (aluno.getEmail() != null) {
-            alunoExist.setEmail(aluno.getEmail());
+        if (request.email() != null) {
+            aluno.setEmail(request.email());
         }
-        if (aluno.getSenha() != null){
-            String senha = aluno.getSenha();
-            alunoExist.setSenha(passwordEncoder.encode(senha));
+        if (request.senha() != null){
+            aluno.setSenha(passwordEncoder.encode(request.senha()));
         }
-        if (aluno.getPlanoEscolhidoId() != null) {
-            alunoExist.setPlanoEscolhidoId(aluno.getPlanoEscolhidoId());
+        if (request.plano() != null) {
+            aluno.setPlanoEscolhidoId(request.plano());
         }
-        return repository.save(alunoExist);
+        return repository.save(aluno);
 
     }
 }

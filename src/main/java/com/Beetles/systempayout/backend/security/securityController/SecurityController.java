@@ -1,11 +1,9 @@
 package com.Beetles.systempayout.backend.security.securityController;
 
 
-import com.Beetles.systempayout.backend.admin.controller.mapper.AdminMapper;
 import com.Beetles.systempayout.backend.admin.controller.request.AdminRequest;
 import com.Beetles.systempayout.backend.admin.controller.response.AdminResponse;
 import com.Beetles.systempayout.backend.admin.service.AdminService;
-import com.Beetles.systempayout.backend.aluno.controller.mapper.AlunoMapper;
 import com.Beetles.systempayout.backend.aluno.controller.request.AlunoRequest;
 import com.Beetles.systempayout.backend.aluno.controller.response.AlunoResponse;
 import com.Beetles.systempayout.backend.aluno.service.AlunoService;
@@ -13,7 +11,6 @@ import com.Beetles.systempayout.backend.security.securityController.request.Logi
 import com.Beetles.systempayout.backend.security.securityController.response.LoginResponse;
 import com.Beetles.systempayout.backend.security.tokenService.TokenService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,24 +26,32 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("auth")
-@RequiredArgsConstructor
 public class SecurityController {
     private final AlunoService alunoService;
     private final AdminService adminService;
     private final ObjectProvider<AuthenticationManager> authenticationManager;
     private final TokenService tokenService;
 
+    public SecurityController(AlunoService alunoService, AdminService adminService, ObjectProvider<AuthenticationManager> authenticationManager, TokenService tokenService) {
+        this.alunoService = alunoService;
+        this.adminService = adminService;
+        this.authenticationManager = authenticationManager;
+        this.tokenService = tokenService;
+    }
+
     @PostMapping("/aluno/register")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<AlunoResponse> registrar(@RequestBody @Valid AlunoRequest request){
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(AlunoMapper.mapResponse(alunoService.registerUser(AlunoMapper.mapRequest(request))));
+        var aluno = alunoService.registerUser(request);
+        var response = AlunoResponse.toAlunoResponse(aluno);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @PostMapping("/admin/register")
     public ResponseEntity<AdminResponse> registrar(@RequestBody @Valid AdminRequest request){
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(AdminMapper.responseMapper(adminService.registrar(AdminMapper.requestMapper(request))));
+        var admin = adminService.registrar(request);
+        var response = AdminResponse.toAdminResponse(admin);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @PostMapping("/login")

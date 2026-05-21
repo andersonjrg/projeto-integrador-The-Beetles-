@@ -2,9 +2,7 @@ package com.Beetles.systempayout.backend.admin.controller.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.Builder;
 
-@Builder
 public record AdminRequest(@NotBlank
                            String nome,
                            @NotBlank

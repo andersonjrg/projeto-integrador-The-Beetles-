@@ -1,14 +1,14 @@
 package com.Beetles.systempayout.backend.plano.service;
 
+import com.Beetles.systempayout.backend.plano.controller.request.PlanoRequest;
 import com.Beetles.systempayout.backend.plano.model.Plano;
 import com.Beetles.systempayout.backend.plano.repository.PlanoRepository;
+import com.Beetles.systempayout.backend.shared.exception.IdNotFoundException;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.UUID;
 
 
@@ -21,48 +21,51 @@ public class PlanosService {
     }
 
     @Transactional
-    public Plano criarPlano(Plano plano){
-        plano.onCreated();
+    public Plano criarPlano(PlanoRequest request){
+        Plano plano = new Plano();
+
+        plano.setNome(request.nome());
+        plano.setCategoria(request.categoria());
+        plano.setValor(request.valor());
+        plano.setAtivo(request.ativo());
+        plano.setAlunos(request.alunos());
+
         return repository.save(plano);
     }
 
-    public List<Plano> mostrarTodosPlanos(int paginas, int itens){
-        Pageable pageable = PageRequest.of(paginas, itens);
-        Page<Plano> planoPage = repository.findAll(pageable);
-        return planoPage.getContent();
+    public Page<Plano> mostrarTodosPlanos(Pageable pageable){
+        return repository.findAll(pageable);
     }
 
     public Plano mostrarPlanoEspecificoPeloId(UUID id){
         return repository.findById(id)
-                .orElseThrow(()-> new RuntimeException("Id não encontrado"));
+                .orElseThrow(()-> new IdNotFoundException(id));
     }
 
     @Transactional
-    public Plano modificarPlano(Plano plano, UUID id){
-        Plano planoAnterior = repository.findById(id)
-                .orElseThrow(()-> new RuntimeException("Id não encontrado"));
-        if (plano.getNome() != null){
-            planoAnterior.setNome(plano.getNome());
+    public Plano modificarPlano(PlanoRequest request, UUID id){
+        Plano plano = repository.findById(id)
+                .orElseThrow(()-> new IdNotFoundException(id));
+
+        if (request.nome() != null){
+            plano.setNome(request.nome());
         }
-        if (plano.getCategoria() != null){
-            planoAnterior.setCategoria(plano.getCategoria());
+        if (request.categoria() != null){
+            plano.setCategoria(request.categoria());
         }
-        if (plano.getValor() != null){
-            planoAnterior.setValor(plano.getValor());
+        if (request.valor() != null){
+            plano.setValor(request.valor());
         }
-        if (plano.getAlunos() != null){
-            planoAnterior.setAlunos(plano.getAlunos());
+        if (request.alunos() != null){
+            plano.setAlunos(request.alunos());
         }
-        if(plano.getFrequenciaAulas() != 0) {
-            planoAnterior.setFrequenciaAulas(plano.getFrequenciaAulas());
-        }
-        return repository.save(planoAnterior);
+        return repository.save(plano);
     }
 
     @Transactional
     public void deletarPlano(UUID id){
         if(!repository.existsById(id)){
-            throw new RuntimeException("O Id não existe");
+            throw new IdNotFoundException(id);
         }
             repository.deleteById(id);
     }

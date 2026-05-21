@@ -1,6 +1,7 @@
 package com.Beetles.systempayout.backend.aluno.model;
 
 import com.Beetles.systempayout.backend.plano.model.Plano;
+import com.Beetles.systempayout.backend.shared.enums.Enum_Status;
 import com.Beetles.systempayout.backend.shared.enums.Enums_roles;
 import jakarta.persistence.*;
 import lombok.*;
@@ -16,7 +17,6 @@ import java.util.UUID;
 
 @Entity
 @Table(name="alunos")
-@Builder
 @Getter
 @Setter
 @AllArgsConstructor
@@ -45,16 +45,14 @@ public class Aluno implements UserDetails {
     @JoinColumn(name = "plano_escolhido_id", nullable = true)
     private Plano planoEscolhidoId;
 
-    private boolean primeiroAcesso = true;
+    private boolean primeiroAcesso;
 
-    private String status;
+    private Enum_Status status;
 
     private LocalDateTime diaVencimento;
 
     @Column(name = "role")
     private Enums_roles role = Enums_roles.ALUNOS;
-
-    private LocalDateTime dataProximoVencimento;
 
     @CreationTimestamp
     private LocalDateTime dataInicioPlano;
@@ -76,9 +74,6 @@ public class Aluno implements UserDetails {
         }else{
             diaVencimento = dataInicioPlano.plusMonths(1);
         }
-    }
-    public void proximoVencimento(){
-        this.dataProximoVencimento = this.diaVencimento.plusMonths(1);
     }
 
     @Override

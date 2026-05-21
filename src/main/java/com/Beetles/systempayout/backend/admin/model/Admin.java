@@ -13,7 +13,6 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "administrador")
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -42,6 +41,15 @@ public class Admin implements UserDetails {
         if(this.role == null){
             this.role = Enums_roles.ADMIN;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "adminId: " + adminId +"\n"+
+                ", role: " + role + "\n"+
+                ", nome: " + nome + "\n"+
+                ", email: " + email + "\n"+
+                ", senha: " + senha;
     }
 
     @Override

@@ -1,10 +1,15 @@
 package com.Beetles.systempayout.backend.admin.controller.response;
 
-import lombok.Builder;
 
-import java.util.UUID;
+import com.Beetles.systempayout.backend.admin.model.Admin;
 
-@Builder
 public record AdminResponse(String nome,
                             String email) {
+
+    public static AdminResponse toAdminResponse(Admin admin){
+        return new AdminResponse(
+                admin.getNome(),
+                admin.getEmail()
+        );
+    }
 }

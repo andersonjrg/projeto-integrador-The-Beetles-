@@ -21,11 +21,12 @@ public class SecurityService implements UserDetailsService {
 
         var aluno = alunoRepository.findByEmail(email);
 
-        if (admin.isPresent()) {
+        if (admin.isPresent())
             return admin.get();
-        }else if(aluno.isPresent()) {
+
+        if(aluno.isPresent())
             return aluno.get();
-        }
+
         throw new UsernameNotFoundException("Email ou senha incorreta");
     }
 }

@@ -1,15 +1,26 @@
 package com.Beetles.systempayout.backend.plano.controller.response;
 
 import com.Beetles.systempayout.backend.aluno.model.Aluno;
-import lombok.Builder;
+import com.Beetles.systempayout.backend.plano.model.Plano;
 
 import java.math.BigDecimal;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-@Builder
 public record PlanoResponse(String nome,
-                            Set<Aluno> alunos,
+                            Set<String> alunos,
                             String categoria,
-                            int frequenciaAulas,
                             BigDecimal valor) {
+
+    public static PlanoResponse toPlanoResponse(Plano plano){
+        return new PlanoResponse(
+                plano.getNome(),
+                plano.getAlunos()
+                        .stream()
+                        .map(Aluno::getNome)
+                        .collect(Collectors.toSet()),
+                plano.getCategoria(),
+                plano.getValor()
+        );
+    }
 }

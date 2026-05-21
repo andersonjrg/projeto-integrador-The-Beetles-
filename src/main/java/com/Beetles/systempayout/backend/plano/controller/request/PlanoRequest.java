@@ -4,12 +4,10 @@ import com.Beetles.systempayout.backend.aluno.model.Aluno;
 import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.Builder;
 
 import java.math.BigDecimal;
 import java.util.Set;
 
-@Builder
 public record PlanoRequest(@NotBlank
                            String nome,
                            @Nullable

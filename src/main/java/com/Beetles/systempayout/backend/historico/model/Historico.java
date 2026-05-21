@@ -1,6 +1,7 @@
 package com.Beetles.systempayout.backend.historico.model;
 
 import com.Beetles.systempayout.backend.aluno.model.Aluno;
+import com.Beetles.systempayout.backend.shared.enums.Enum_Status;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
@@ -15,7 +16,6 @@ import static com.Beetles.systempayout.backend.shared.utils.DateTimeLocal.pegarH
 @Table(name = "historico_pagamento")
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -35,7 +35,7 @@ public class Historico {
     private BigDecimal valorCobrado;
 
     @Column(nullable = false)
-    private StatusPagamento statusPagamento;
+    private Enum_Status statusPagamento;
 
     @Column(nullable = false, updatable = false)
     private LocalDateTime dataSolicitacao;
@@ -47,14 +47,12 @@ public class Historico {
     public void onCreated(){
         this.dataSolicitacao = pegarHorarioAtual();
         if(statusPagamento == null){
-        this.statusPagamento = StatusPagamento.PENDENTE;
+        this.statusPagamento = Enum_Status.PENDENTE;
         }
     }
 
-    private enum StatusPagamento{ PENDENTE, PAGO, CANCELADO, FALHOU};
-
     public void dataConfirmation(){
         this.dataConfirmacao = pegarHorarioAtual();
-        this.statusPagamento = StatusPagamento.PAGO;
+        this.statusPagamento = Enum_Status.PAGO;
     }
 }

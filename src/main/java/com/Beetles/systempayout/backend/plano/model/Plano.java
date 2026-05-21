@@ -15,7 +15,6 @@ import static com.Beetles.systempayout.backend.shared.utils.DateTimeLocal.pegarH
 @Table(name = "planos")
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString(exclude = "alunos")
@@ -33,9 +32,6 @@ public class Plano {
 
     @Column(nullable = false)
     private String categoria;
-
-    @Column(nullable = false)
-    private int frequenciaAulas;
 
     @Column(precision = 10, scale = 2)
     private BigDecimal valor;
