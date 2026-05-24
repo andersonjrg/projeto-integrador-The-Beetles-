@@ -6,6 +6,7 @@ import com.Beetles.systempayout.backend.admin.controller.response.AdminResponse;
 import com.Beetles.systempayout.backend.admin.service.AdminService;
 import com.Beetles.systempayout.backend.security.securityController.request.LoginRequest;
 import com.Beetles.systempayout.backend.security.securityController.response.LoginResponse;
+import com.Beetles.systempayout.backend.security.securityService.SecurityService;
 import com.Beetles.systempayout.backend.security.tokenService.TokenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.ObjectProvider;
@@ -24,13 +25,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/auth")
 public class SecurityController {
     private final AdminService adminService;
+    private final SecurityService securityService;
     private final ObjectProvider<AuthenticationManager> authenticationManager;
     private final TokenService tokenService;
 
-    public SecurityController(AdminService adminService, ObjectProvider<AuthenticationManager> authenticationManager, TokenService tokenService) {
+    public SecurityController(AdminService adminService, SecurityService securityService, ObjectProvider<AuthenticationManager> authenticationManager, TokenService tokenService) {
         this.adminService = adminService;
         this.authenticationManager = authenticationManager;
         this.tokenService = tokenService;
+        this.securityService = securityService;
     }
 
     @PostMapping("/admin/register")
@@ -39,6 +42,13 @@ public class SecurityController {
         var response = AdminResponse.toAdminResponse(admin);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
+
+    @PostMapping("/admin/alterarsenha")
+    public ResponseEntity<String> alterarSenha(@RequestBody String email,@RequestBody String senha) {
+        securityService.alterarSenha(email, senha);
+        return ResponseEntity.ok("Senha alterada com sucesso");
+    }
+    
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody @Valid LoginRequest request){

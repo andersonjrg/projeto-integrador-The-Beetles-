@@ -45,11 +45,9 @@ public class Admin implements UserDetails {
 
     @Override
     public String toString() {
-        return "adminId: " + adminId +"\n"+
-                ", role: " + role + "\n"+
+        return "role: " + role + "\n"+
                 ", nome: " + nome + "\n"+
-                ", email: " + email + "\n"+
-                ", senha: " + senha;
+                ", email: " + email + "\n";
     }
 
     @Override

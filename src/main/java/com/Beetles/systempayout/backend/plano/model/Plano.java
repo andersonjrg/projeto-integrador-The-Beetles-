@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,8 +28,8 @@ public class Plano {
     @Column(nullable = false)
     private String nome;
 
-    @OneToMany(mappedBy = "planoEscolhidoId",fetch = FetchType.LAZY)
-    private List<Aluno> alunos;
+    @OneToMany(mappedBy = "planoEscolhidoId", fetch = FetchType.LAZY)
+    private List<Aluno> alunos = new ArrayList<>();
 
     @Column(nullable = false)
     private String categoria;

@@ -11,9 +11,15 @@ public record AlunoResponse(String nome,
                             LocalDateTime diaVencimento) {
 
     public static AlunoResponse toAlunoResponse(Aluno aluno){
+
+        String planoNome = null;
+
+        if (aluno.getPlanoEscolhidoId() != null) {
+            planoNome = aluno.getPlanoEscolhidoId().getNome();
+        }
         return new AlunoResponse(
                 aluno.getNome(),
-                aluno.getPlanoEscolhidoId().getNome(),
+                planoNome,
                 aluno.getStatus(),
                 aluno.getDiaVencimento()
         );

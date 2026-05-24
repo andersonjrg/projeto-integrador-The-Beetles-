@@ -35,22 +35,11 @@ public class Aluno {
 
     private LocalDateTime diaVencimento;
 
-    @Column(name = "role")
-    private Enums_roles role = Enums_roles.ALUNOS;
-
-    @CreationTimestamp
     private LocalDateTime dataInicioPlano;
 
     @Column(updatable = false)
     @CreationTimestamp
     private LocalDateTime dataCadastro;
-
-    @PrePersist
-    public void roles(){
-        if(this.role == null){
-            this.role = Enums_roles.ALUNOS;
-        }
-    }
 
     public void calcularVencimento(){
         if(this.dataInicioPlano == null){

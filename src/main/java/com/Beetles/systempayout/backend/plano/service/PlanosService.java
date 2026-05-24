@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,7 +29,10 @@ public class PlanosService {
     @Transactional
     public Plano criarPlano(PlanoRequest request){
 
-        List<Aluno> aluno = alunoRepository.findAllById(request.alunos());
+        List<Aluno> aluno = new ArrayList<>();
+        if (request.alunos() != null && !request.alunos().isEmpty()) {
+            aluno = alunoRepository.findAllById(request.alunos());
+        }
 
         Plano plano = new Plano();
 

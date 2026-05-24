@@ -13,12 +13,19 @@ public record PlanoResponse(String nome,
                             BigDecimal valor) {
 
     public static PlanoResponse toPlanoResponse(Plano plano){
+
+        Set<String> alunoPlano = null;
+
+        if (plano.getAlunos() != null) {
+            alunoPlano = plano.getAlunos()
+                    .stream()
+                    .map(Aluno::getNome)
+                    .collect(Collectors.toSet());
+        }
+
         return new PlanoResponse(
                 plano.getNome(),
-                plano.getAlunos()
-                        .stream()
-                        .map(Aluno::getNome)
-                        .collect(Collectors.toSet()),
+                alunoPlano,
                 plano.getCategoria(),
                 plano.getValor()
         );

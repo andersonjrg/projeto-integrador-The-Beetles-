@@ -39,8 +39,11 @@ public class AlunoService{
     @Transactional
     public Aluno registerUser(AlunoRequest request) {
 
-        Plano plano = planoRepository.findById(request.plano())
-                .orElseThrow(() -> new IdNotFoundException(request.plano()));
+        Plano plano = null;
+        if (request.plano() != null) {
+            plano = planoRepository.findById(request.plano())
+                    .orElseThrow(() -> new IdNotFoundException(request.plano()));
+        }
 
         Aluno aluno = new Aluno();
         aluno.setNome(request.nome());
