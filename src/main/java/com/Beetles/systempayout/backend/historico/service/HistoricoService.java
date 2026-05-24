@@ -3,6 +3,7 @@ package com.Beetles.systempayout.backend.historico.service;
 import com.Beetles.systempayout.backend.aluno.model.Aluno;
 import com.Beetles.systempayout.backend.aluno.repository.AlunoRepository;
 import com.Beetles.systempayout.backend.historico.controller.Request.HistoricoRequest;
+import com.Beetles.systempayout.backend.historico.controller.Response.HistoricoResponse;
 import com.Beetles.systempayout.backend.historico.model.Historico;
 import com.Beetles.systempayout.backend.historico.repository.HistoricoRepository;
 import com.Beetles.systempayout.backend.shared.exception.IdNotFoundException;
@@ -36,12 +37,16 @@ public class HistoricoService {
         return repository.save(historico);
     }
 
-    public Page<Historico> verTodosHistoricos(Pageable pageable){
-        return repository.findAll(pageable);
+    @Transactional(readOnly = true)
+    public Page<HistoricoResponse> verTodosHistoricos(Pageable pageable){
+        return repository.findAll(pageable)
+                .map(HistoricoResponse::toHistoricoResponse);
     }
 
-    public Historico verHistoricoId(UUID id){
+    @Transactional(readOnly = true)
+    public HistoricoResponse verHistoricoId(UUID id){
         return repository.findById(id)
+                .map(HistoricoResponse::toHistoricoResponse)
                 .orElseThrow(()-> new IdNotFoundException(id));
     }
 

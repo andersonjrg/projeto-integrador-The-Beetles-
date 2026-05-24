@@ -32,16 +32,14 @@ public class PlanoController {
     @GetMapping("/buscar")
     public ResponseEntity<Page<PlanoResponse>> mostrarPlanos(@RequestParam Pageable pageable) {
         Page<PlanoResponse> response = service
-                .mostrarTodosPlanos(pageable)
-                .map(PlanoResponse::toPlanoResponse);
+                .mostrarTodosPlanos(pageable);
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/buscar/{id}")
     public ResponseEntity<PlanoResponse> verPlanoEspecifico(@PathVariable UUID id) {
         var plano = service.mostrarPlanoEspecificoPeloId(id);
-        var response = PlanoResponse.toPlanoResponse(plano);
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(plano);
     }
 
     @PutMapping("/atualizar/{id}")

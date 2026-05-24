@@ -3,6 +3,7 @@ package com.Beetles.systempayout.backend.plano.service;
 import com.Beetles.systempayout.backend.aluno.model.Aluno;
 import com.Beetles.systempayout.backend.aluno.repository.AlunoRepository;
 import com.Beetles.systempayout.backend.plano.controller.request.PlanoRequest;
+import com.Beetles.systempayout.backend.plano.controller.response.PlanoResponse;
 import com.Beetles.systempayout.backend.plano.model.Plano;
 import com.Beetles.systempayout.backend.plano.repository.PlanoRepository;
 import com.Beetles.systempayout.backend.shared.exception.IdNotFoundException;
@@ -45,12 +46,16 @@ public class PlanosService {
         return repository.save(plano);
     }
 
-    public Page<Plano> mostrarTodosPlanos(Pageable pageable){
-        return repository.findAll(pageable);
+    @Transactional(readOnly = true)
+    public Page<PlanoResponse> mostrarTodosPlanos(Pageable pageable){
+        return repository.findAll(pageable)
+                .map(PlanoResponse::toPlanoResponse);
     }
 
-    public Plano mostrarPlanoEspecificoPeloId(UUID id){
+    @Transactional(readOnly = true)
+    public PlanoResponse mostrarPlanoEspecificoPeloId(UUID id){
         return repository.findById(id)
+                .map(PlanoResponse::toPlanoResponse)
                 .orElseThrow(()-> new IdNotFoundException(id));
     }
 

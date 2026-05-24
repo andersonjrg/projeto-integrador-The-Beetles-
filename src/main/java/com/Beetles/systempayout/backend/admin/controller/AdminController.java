@@ -23,8 +23,7 @@ public class AdminController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<AdminResponse> bucarPorEmail (@Valid @RequestBody String email){
         var adminEmail = service.buscarPorEmail(email);
-        var response = AdminResponse.toAdminResponse(adminEmail);
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        return ResponseEntity.status(HttpStatus.CREATED).body(adminEmail);
     }
 
     @DeleteMapping("/delete/{id}")

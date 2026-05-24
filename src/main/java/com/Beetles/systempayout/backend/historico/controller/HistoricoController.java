@@ -33,16 +33,14 @@ public class HistoricoController {
     @GetMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<HistoricoResponse> buscar(@PathVariable UUID id){
-        var request = service.verHistoricoId(id);
-        var response = HistoricoResponse.toHistoricoResponse(request);
+        var response = service.verHistoricoId(id);
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/findAll")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Page<HistoricoResponse>> buscarAll(@RequestParam Pageable pageable){
-        var response = service.verTodosHistoricos(pageable)
-                .map(HistoricoResponse::toHistoricoResponse);
+        var response = service.verTodosHistoricos(pageable);
         return ResponseEntity.ok(response);
     }
 
