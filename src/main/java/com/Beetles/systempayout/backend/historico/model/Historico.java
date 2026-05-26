@@ -4,6 +4,7 @@ import com.Beetles.systempayout.backend.aluno.model.Aluno;
 import com.Beetles.systempayout.backend.shared.enums.Enum_Status;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.PositiveOrZero;
+import jdk.jfr.Timestamp;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -25,7 +26,7 @@ public class Historico {
     @Column(name = "historico_id", nullable = false)
     private UUID historicoId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "aluno_id")
     @ToString.Exclude
     private Aluno aluno;
@@ -37,10 +38,11 @@ public class Historico {
     @Column(name = "status_pagamento", nullable = false)
     private Enum_Status statusPagamento;
 
-    @Column(name = "data_solicitacao", nullable = false, updatable = false)
+    @Column(name = "data_solicitacao", nullable = false, updatable = true)
     private LocalDateTime dataSolicitacao;
 
-    @Column(name = "data_confirmacao", updatable = false)
+    @Column(name = "data_confirmacao", updatable = true)
+    @Timestamp
     private LocalDateTime dataConfirmacao;
 
     @PrePersist
@@ -50,6 +52,7 @@ public class Historico {
         this.statusPagamento = Enum_Status.PENDENTE;
         }
     }
+
 
     public void dataConfirmation(){
         this.dataConfirmacao = pegarHorarioAtual();

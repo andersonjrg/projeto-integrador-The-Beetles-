@@ -53,6 +53,11 @@ public class AlunoService{
         aluno.setPlanoEscolhidoId(plano);
         aluno.setStatus(request.status());
 
+        if (request.dataInicioPlano() != null) {
+            aluno.setDataInicioPlano(request.dataInicioPlano());
+            aluno.calcularVencimento();
+        }
+
         return repository.save(aluno);
     }
 
@@ -80,6 +85,12 @@ public class AlunoService{
             aluno.setStatus(request.status());
         }
         aluno.setPlanoEscolhidoId(plano);
+
+        if (request.dataInicioPlano() != null) {
+            aluno.setDataInicioPlano(request.dataInicioPlano());
+            aluno.calcularVencimento();
+        }
+
         return repository.save(aluno);
 
     }

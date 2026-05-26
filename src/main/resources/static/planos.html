@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>The Beetles</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/planos/style.css">
 </head>
 <body>
-    //Essa página deve conter a tabela de planos, bem como os inputs para adicionar novos planos
     <h1>Planos</h1>
     <table id="tabelaPlanos"></table>
     <h2>Registrar Plano</h2>
@@ -18,7 +19,7 @@
         <p>Frequência Aulas(Semanal):</p>
         <input id="inFreq" type="number">
         <p>Valor(R$):</p>
-        <input id="inValor" type="number">
+        <input id="inValor" type="number" step="0.01">
         <p>Status:</p>
         <select name="status" id="inStatusPlano">
             <option value="Ativo">Ativo</option>

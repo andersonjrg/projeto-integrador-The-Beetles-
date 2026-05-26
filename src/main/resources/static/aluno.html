@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Beetles</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/aluno/style.css">
+</head>
+
+<body>
+    <h1>Perfil do Aluno</h1>
+    <p>Aluno: <span id="nomeAluno"></span></p>
+    <p>Plano: <span id="planoAluno"></span></p>
+    <p>Status: <span id="statusAluno"></span></p>
+    <p>Vencimento: <span id="vencimentoAluno"></span></p>
+
+    <h2>Registrar Pagamentos</h2>
+    <form>
+        <p>Valor(R$):</p>
+        <input id="inValor" type="number">
+        <br>
+        <input type="submit" value="Registrar pagamento">
+    </form>
+    <h2>Histórico Pagamentos</h2>
+    <table id="tabelaPagamentos"></table>
+
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/alunoPagamentos.js"></script>
+</body>
+
+</html>

@@ -7,7 +7,8 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public record HistoricoResponse(UUID aluno,
+public record HistoricoResponse(UUID id,
+                                String nomeAluno,
                                 BigDecimal valorCobrado,
                                 Enum_Status statusPagamento,
                                 LocalDateTime dataSolicitacao,
@@ -15,7 +16,8 @@ public record HistoricoResponse(UUID aluno,
 
     public static HistoricoResponse toHistoricoResponse(Historico historico){
         return new HistoricoResponse(
-                historico.getAluno().getAlunoId(),
+                historico.getHistoricoId(),
+                historico.getAluno().getNome(),
                 historico.getValorCobrado(),
                 historico.getStatusPagamento(),
                 historico.getDataSolicitacao(),

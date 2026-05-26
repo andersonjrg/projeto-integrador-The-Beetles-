@@ -6,11 +6,13 @@ import com.Beetles.systempayout.backend.historico.service.HistoricoService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -39,18 +41,18 @@ public class HistoricoController {
 
     @GetMapping("/findAll")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Page<HistoricoResponse>> buscarAll(@RequestParam Pageable pageable){
+    public ResponseEntity<Page<HistoricoResponse>> buscarAll(
+            @PageableDefault(size=10, page = 0) Pageable pageable){
         var response = service.verTodosHistoricos(pageable);
         return ResponseEntity.ok(response);
     }
-
-    @PostMapping("/solicitacao/{id}")
+    @GetMapping("/getAllByAluno/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<HistoricoResponse> solicitar(@PathVariable UUID id){
-        var historico = service.registrarDataDeSolicitacao(id);
-        var response = HistoricoResponse.toHistoricoResponse(historico);
+    public ResponseEntity<List<HistoricoResponse>> getAllByAluno(@PathVariable UUID id){
+        var response = service.getPagamentosAluno(id);
         return ResponseEntity.ok(response);
     }
+
 
     @PostMapping("/confirmar/{id}")
     @PreAuthorize("hasRole('ADMIN')")

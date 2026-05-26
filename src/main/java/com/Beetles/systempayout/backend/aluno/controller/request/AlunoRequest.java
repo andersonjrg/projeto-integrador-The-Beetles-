@@ -5,6 +5,7 @@ import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 
@@ -13,6 +14,8 @@ public record AlunoRequest(@NotBlank
                            @Nullable
                            UUID plano,
                            @NotNull
-                           Enum_Status status
+                           Enum_Status status,
+                           @Nullable
+                           LocalDateTime dataInicioPlano
                            ) {
 }

@@ -2,7 +2,6 @@ package com.Beetles.systempayout.backend.aluno.model;
 
 import com.Beetles.systempayout.backend.plano.model.Plano;
 import com.Beetles.systempayout.backend.shared.enums.Enum_Status;
-import com.Beetles.systempayout.backend.shared.enums.Enums_roles;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -27,7 +26,7 @@ public class Aluno {
     @Column(nullable = false)
     private String nome;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "plano_escolhido_id", nullable = true)
     private Plano planoEscolhidoId;
 

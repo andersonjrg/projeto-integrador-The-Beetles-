@@ -4,18 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>The Beetles</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/registrarAluno/style.css">
 </head>
 
 <body>
-    <!-- Essa página deve conter os inputs para o dono registrar novos alunos na lista -->
     <h1>Registrar Aluno</h1>
     <form>
         <p>Nome:</p>
         <input id="inNome" type="text">
         <p>Plano:</p>
         <select id="planos" name="planos">
+            <option value="">Nenhum</option>
         </select>
+        <p>Data Início do Plano:</p>
+        <input id="inDataInicio" type="date">
         <br>
         <p>Status:</p>
         <select name="status" id="inStatus">

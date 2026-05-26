@@ -7,20 +7,22 @@ async function getPagamentos() {
         let tabHtml =
             `<thead>
                 <th scope="col">Nome</th>
-                <th scope="col">Plano Escolhido</th>
+                <th scope="col">Valor(R$)</th>
                 <th scope="col">Status</th>
-                <th scope="col">Vencimento</th>
+                <th scope="col">Solicitação</th>
+                <th scope="col">Confirmação</th>
             </thead>
             <tbody>`
             ;
 
-        for (const aluno of lista) {
+        for (const pagamento of lista) {
             tabHtml += `
                 <tr>
-                    <td>${aluno.nome ?? ""}</td>
-                    <td>${aluno.planoEscolhidoId ?? "Nenhum"}</td>
-                    <td>${aluno.status ?? ""}</td>
-                    <td>${aluno.dataVencimento ?? ""}</td>
+                    <td>${pagamento.nomeAluno ?? ""}</td>
+                    <td>${pagamento.valorCobrado ?? "Nenhum"}</td>
+                    <td>${pagamento.statusPagamento ?? ""}</td>
+                    <td>${formatarData(pagamento.dataSolicitacao) ?? ""}</td>
+                    <td>${formatarData(pagamento.dataConfirmacao) ?? ""}</td>
                 </tr>
             `;
         }

@@ -18,10 +18,14 @@ async function getAlunos() {
         for (const aluno of lista) {
             tabHtml += `
                 <tr>
-                    <td>${aluno.nome ?? ""}</td>
-                    <td>${aluno.planoEscolhidoId ?? "Nenhum"}</td>
+                    <td>
+                    <a href="aluno.html?id=${aluno.id}" style="cursor:pointer">
+                    ${aluno.nome ?? ""}
+                    </a>
+                    </td>
+                    <td>${aluno.planoNome ?? "Nenhum"}</td>
                     <td>${aluno.status ?? ""}</td>
-                    <td>${aluno.dataVencimento ?? ""}</td>
+                    <td>${formatarData(aluno.diaVencimento) ?? ""}</td>
                 </tr>
             `;
         }

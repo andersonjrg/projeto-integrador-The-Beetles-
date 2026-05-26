@@ -37,8 +37,17 @@ const Api = {
     deletarPlano: (id) => request(`plano/deletar/${id}`, { method: "DELETE" }),
 
     //Historico (Pagamentos)
+    registrarPagamento: (dados) => request("historico/salvar", {method: "POST", body: JSON.stringify(dados)}),
     getPagamentos: () => request("historico/findAll"),
-    getPagamentoPorId: (id) => request(`historico/${id}`),
-    registrarSolicitacao: (id) => request(`historico/solicitacao/${id}`, { method: "POST" }),
-    confirmarPagamento: (id) => request(`historico/confirmar/${id}`, { method: "POST" })
+    getPagamentosAluno: (id) => request(`historico/getAllByAluno/${id}`),
+    getPagamentoPorId: (id) => request(`historico/${id}`), 
+    confirmarPagamento: (id) => request(`historico/confirmar/${id}`, { method: "POST", body: JSON.stringify(id)})
+}
+function formatarData(dataISO) {
+    if (!dataISO) return "—";
+    return new Date(dataISO).toLocaleDateString("pt-BR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric"
+    });
 }

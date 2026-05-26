@@ -4,9 +4,11 @@ import com.Beetles.systempayout.backend.aluno.model.Aluno;
 import com.Beetles.systempayout.backend.shared.enums.Enum_Status;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
-public record AlunoResponse(String nome,
-                            String planoEscolhidoId,
+public record AlunoResponse(UUID id,
+                            String nome,
+                            String planoNome,
                             Enum_Status status,
                             LocalDateTime diaVencimento) {
 
@@ -18,6 +20,7 @@ public record AlunoResponse(String nome,
             planoNome = aluno.getPlanoEscolhidoId().getNome();
         }
         return new AlunoResponse(
+                aluno.getAlunoId(),
                 aluno.getNome(),
                 planoNome,
                 aluno.getStatus(),

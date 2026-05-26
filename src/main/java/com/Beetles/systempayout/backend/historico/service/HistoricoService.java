@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -34,6 +35,7 @@ public class HistoricoService {
         historico.setAluno(aluno);
         historico.setValorCobrado(request.valor());
 
+        historico.onCreated();
         return repository.save(historico);
     }
 
@@ -51,18 +53,18 @@ public class HistoricoService {
     }
 
     @Transactional
-    public Historico registrarDataDeSolicitacao(UUID id){
-        Historico historico = repository.findById(id)
-                .orElseThrow(()-> new IdNotFoundException(id));
-        historico.onCreated();
-        return historico;
-    }
-
-    @Transactional
     public Historico registrarDataDeConfirmacao(UUID id){
         Historico historico = repository.findById(id)
                 .orElseThrow(()-> new IdNotFoundException(id));
         historico.dataConfirmation();
+        repository.save(historico);
         return historico;
+    }
+    @Transactional(readOnly = true)
+    public List<HistoricoResponse> getPagamentosAluno (UUID id){
+        return repository.findByAlunoAlunoId(id)
+                .stream()
+                .map(HistoricoResponse::toHistoricoResponse)
+                .toList();
     }
 }
