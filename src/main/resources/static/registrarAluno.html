@@ -10,29 +10,42 @@
 </head>
 
 <body>
-    <h1>Registrar Aluno</h1>
-    <form>
-        <p>Nome:</p>
-        <input id="inNome" type="text">
-        <p>Plano:</p>
-        <select id="planos" name="planos">
-            <option value="">Nenhum</option>
-        </select>
-        <p>Data Início do Plano:</p>
-        <input id="inDataInicio" type="date">
-        <br>
-        <p>Status:</p>
-        <select name="status" id="inStatus">
-            <option value="PENDENTE">Pendente</option>
-            <option value="PAGO">Pago</option>
-            <option value="ATRASADO">Atrasado</option>
-            <option value="CANCELADO">Cancelado</option>
-        </select>
-        <br>
-        <input type="submit" value="Salvar Aluno">
-        <script src="js/auth.js"></script>
-        <script src="js/api.js"></script>
-        <script src="js/registrarAluno.js"></script>
+    <!-- Essa página deve conter os inputs para o dono registrar novos alunos na lista -->
+    <header id="abatopo">
+        <a href="index.html">
+            <img src="elements/logo-ctjs.png" alt="Logo da Academia">
+        </a>
+        <nav id="navbar">
+            <ul class="sublinks">
+                <a href="adminDashboard.html">Painel de Controle</a>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h1>Registrar Aluno</h1>
+        <form>
+            <p>Nome:</p>
+            <input id="inNome" type="text">
+            <p>Plano:</p>
+            <select id="planos" name="planos">
+                <option value="">Nenhum</option>
+            </select>
+            <p>Data Início do Plano:</p>
+            <input id="inDataInicio" type="date">
+            <br>
+            <p>Status:</p>
+            <select name="status" id="inStatus">
+                <option value="PENDENTE">Pendente</option>
+                <option value="PAGO">Pago</option>
+                <option value="ATRASADO">Atrasado</option>
+                <option value="CANCELADO">Cancelado</option>
+            </select>
+            <br>
+            <input type="submit" value="Salvar Aluno">
+    </section>
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/registrarAluno.js"></script>
     </form>
 </body>
 
