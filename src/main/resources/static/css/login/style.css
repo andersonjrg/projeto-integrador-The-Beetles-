@@ -1,0 +1,87 @@
+h2{
+    font-family: var(--fonte02);
+    font-size: 24px;
+    margin-bottom: 5%;
+}
+
+footer{
+    font-family: var(--fonte02);
+    font-size: 16px;
+}
+
+#abatopo {
+    justify-content: center;
+}
+
+#altsenha {
+    color: #e97123;
+}
+
+#container{
+    align-items: center;
+    display: flex;
+    height: 85vh;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+
+#background{
+    height: 85vh;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+
+#card-login{
+    align-items: center;
+    background-color: #e97123;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    min-height: 35vh;
+    width: 25%;
+}
+
+#inEmail, #inSenha{
+    background-color: white;
+    border: 1px solid #d8661b;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
+    font-size: 12px;
+    margin-bottom: 1vh;
+    min-height: 4vh;
+    outline: none;
+    padding: 0% 3% 0% 3%;
+    width: 100%;
+}
+
+#btnLogin{
+    background-color: #f88a40;
+    border: 1px solid white;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
+    color: white;
+    font-weight: bolder;
+    margin-top: 3%;
+    min-height: 4vh;
+    outline: none;
+    width: 100%;
+}
+
+#btnLogin:hover{
+    background-color: #eb7e35;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: white;
+}
+
+#instRegistro{
+    font-weight: bold;
+    padding: 1.5%;
+    text-align: center;
+}

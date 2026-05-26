@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,19 @@
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/adminDashboard/style.css">
 </head>
+
 <body>
-    <header>
-        <ul>
-            <a href="alterarSenha.html">Alterar minha senha</a>
-            <a href="registrarAluno.html">Registrar alunos</a>
-            <a href="planos.html">Planos</a>
-        </ul>
+    <header id="abatopo">
+        <a href="index.html">
+            <img src="elements/logo-ctjs.png" alt="Logo da Academia">
+        </a>
+        <nav id="navbar">
+            <ul class="sublinks">
+                <a href="alterarSenha.html">Alterar minha senha</a>
+                <a href="registrarAluno.html">Registrar alunos</a>
+                <a href="planos.html">Planos</a>
+            </ul>
+        </nav>
     </header>
     <main>
         <h2>Tabela Alunos</h2>
@@ -24,6 +31,6 @@
     <script src="js/api.js"></script>
     <script src="js/alunos.js"></script>
     <script src="js/pagamentos.js"></script>
-
 </body>
+
 </html>

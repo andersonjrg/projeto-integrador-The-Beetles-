@@ -9,7 +9,8 @@ button {
 }
 
 button:hover {
-    background-color: #c97123;
+    background-color: #eb7e35;
+    cursor: pointer;
     text-decoration: underline;
     text-decoration-color: white;
 }
@@ -26,6 +27,20 @@ button:hover {
 
 .opções h3 {
     padding-bottom: 1%;
+}
+
+#btnInstagram {
+    position: fixed;
+    width: 4%;
+    right: 6%;
+    bottom: 1.5%;
+}
+
+#btnWhatsapp {
+    position: fixed;
+    width: 4%;
+    right: 1.5%;
+    bottom: 1.5%;
 }
 
 #conteiner-midia {
