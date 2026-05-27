@@ -8,6 +8,7 @@ import java.util.UUID;
 
 public record AlunoResponse(UUID id,
                             String nome,
+                            UUID planoId,
                             String planoNome,
                             Enum_Status status,
                             LocalDateTime diaVencimento) {
@@ -15,13 +16,16 @@ public record AlunoResponse(UUID id,
     public static AlunoResponse toAlunoResponse(Aluno aluno){
 
         String planoNome = null;
+        UUID planoId = null;
 
         if (aluno.getPlanoEscolhidoId() != null) {
             planoNome = aluno.getPlanoEscolhidoId().getNome();
+            planoId = aluno.getPlanoEscolhidoId().getPlanoId();
         }
         return new AlunoResponse(
                 aluno.getAlunoId(),
                 aluno.getNome(),
+                planoId,
                 planoNome,
                 aluno.getStatus(),
                 aluno.getDiaVencimento()

@@ -1,8 +1,11 @@
 const tabelaPagamentos = document.querySelector("#tabelaPagamentos")
-async function getPagamentos() {
+let paginaPagamentos = 0;
+async function getPagamentos(pagina = 0) {
     try {
-        const Pagamentos = await Api.getPagamentos();
-        const lista = Pagamentos.content ?? [];
+        paginaPagamentos = pagina;
+        const pagamentos = await Api.getPagamentos(pagina);
+        const lista = pagamentos.content ?? [];
+        const totalPaginas = pagamentos.totalPages ?? 1;
 
         let tabHtml =
             `<thead>
@@ -29,6 +32,7 @@ async function getPagamentos() {
 
         tabHtml += `</tbody>`;
         tabelaPagamentos.innerHTML = tabHtml;
+         renderPaginacao("paginacaoPagamentos", paginaPagamentos, totalPaginas, getPagamentos);
     } catch (error) {
         alert(error?.message || "Erro ao carregar Pagamentos");
     }

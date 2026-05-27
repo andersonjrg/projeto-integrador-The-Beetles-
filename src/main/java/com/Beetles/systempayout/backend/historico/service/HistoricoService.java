@@ -67,4 +67,11 @@ public class HistoricoService {
                 .map(HistoricoResponse::toHistoricoResponse)
                 .toList();
     }
+    public void deletarPagamentoId (UUID id){
+        if(!repository.existsById(id)){
+            throw new RuntimeException("Esse pagamento não foi encontrado no sistema");
+        }
+        repository.deleteById(id);
+
+    }
 }

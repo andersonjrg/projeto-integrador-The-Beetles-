@@ -134,3 +134,7 @@ td{
     justify-content: center;
     gap: 1%;
 }
+button {
+    padding: 1%;
+    margin: 1%;
+}

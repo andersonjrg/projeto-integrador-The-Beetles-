@@ -42,7 +42,7 @@ public class PlanosService {
         plano.setValor(request.valor());
         plano.setAtivo(request.ativo());
         plano.setAlunos(aluno);
-
+        plano.setFrequenciaAulas(request.frequenciaAulas());
         return repository.save(plano);
     }
 
@@ -64,7 +64,10 @@ public class PlanosService {
         Plano plano = repository.findById(id)
                 .orElseThrow(()-> new IdNotFoundException(id));
 
-            List<Aluno> aluno = alunoRepository.findAllById(request.alunos());
+        List<Aluno> aluno = new ArrayList<>();
+        if (request.alunos() != null && !request.alunos().isEmpty()) {
+            aluno = alunoRepository.findAllById(request.alunos());
+        };
 
         if (request.nome() != null){
             plano.setNome(request.nome());
@@ -75,6 +78,8 @@ public class PlanosService {
         if (request.valor() != null){
             plano.setValor(request.valor());
         }
+        plano.setFrequenciaAulas(request.frequenciaAulas());
+        plano.setAtivo(request.ativo());
         plano.setAlunos(aluno);
         return repository.save(plano);
     }
@@ -83,6 +88,11 @@ public class PlanosService {
     public void deletarPlano(UUID id){
         if(!repository.existsById(id)){
             throw new IdNotFoundException(id);
+        }
+        List<Aluno> alunos = alunoRepository.findByPlanoEscolhidoIdPlanoId(id);
+        for (Aluno aluno : alunos) {
+            aluno.setPlanoEscolhidoId(null);
+            alunoRepository.save(aluno);
         }
             repository.deleteById(id);
     }

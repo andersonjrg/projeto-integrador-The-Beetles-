@@ -4,6 +4,7 @@ import com.Beetles.systempayout.backend.aluno.controller.request.AlunoRequest;
 import com.Beetles.systempayout.backend.aluno.controller.response.AlunoResponse;
 import com.Beetles.systempayout.backend.aluno.model.Aluno;
 import com.Beetles.systempayout.backend.aluno.repository.AlunoRepository;
+import com.Beetles.systempayout.backend.historico.repository.HistoricoRepository;
 import com.Beetles.systempayout.backend.plano.model.Plano;
 import com.Beetles.systempayout.backend.plano.repository.PlanoRepository;
 import com.Beetles.systempayout.backend.shared.exception.IdNotFoundException;
@@ -19,10 +20,14 @@ public class AlunoService{
 
     private final AlunoRepository repository;
     private final PlanoRepository planoRepository;
+    private final HistoricoRepository historicoRepository;
 
-    public AlunoService(AlunoRepository repository, PlanoRepository planoRepository) {
+    public AlunoService(AlunoRepository repository,
+                        PlanoRepository planoRepository,
+                        HistoricoRepository historicoRepository) {
         this.repository = repository;
         this.planoRepository = planoRepository;
+        this.historicoRepository = historicoRepository;
     }
 
     @Transactional(readOnly = true)
@@ -48,6 +53,7 @@ public class AlunoService{
                     .orElseThrow(() -> new IdNotFoundException(request.plano()));
         }
 
+
         Aluno aluno = new Aluno();
         aluno.setNome(request.nome());
         aluno.setPlanoEscolhidoId(plano);
@@ -67,6 +73,7 @@ public class AlunoService{
         if (!repository.existsById(id)) {
             throw new IdNotFoundException(id);
         }
+        historicoRepository.deleteByAlunoAlunoId(id);
         repository.deleteById(id);
     }
 

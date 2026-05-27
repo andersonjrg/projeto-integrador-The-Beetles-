@@ -1,3 +1,22 @@
+#abatopo {
+    justify-content: center;
+    gap: 5%;
+}
+
 #tabelaPlanos {
     width: 45%;
+}
+table input:disabled {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: default;
+}
+
+table input:enabled {
+    background: #1e1e1e;
+    border: 1px solid #e97123;
+    border-radius: 4px;
+    color: white;
+    padding: 4px 8px;
 }

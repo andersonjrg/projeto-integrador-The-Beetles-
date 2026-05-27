@@ -1,0 +1,55 @@
+#abatopo {
+    justify-content: center;
+    gap: 5%;
+}
+
+#card-registro{
+    align-items: center;
+    background-color: #e97123;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    min-height: 35vh;
+    padding: 2%;
+    width: 25%;
+}
+
+#container{
+    align-items: center;
+    display: flex;
+    height: 85vh;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+
+#inDataInicio, #inSalvar, #inStatus, #planos {
+    background-color: #f88a40;
+    border: 1px solid white;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
+    color: white;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    min-height: 4vh;
+    outline: none;
+    text-align: center;
+    width: 100%;
+}
+
+#inNome {
+    background-color: white;
+    border: 1px solid #d8661b;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
+    font-size: 12px;
+    margin-bottom: 1vh;
+    min-height: 4vh;
+    outline: none;
+    padding: 0% 3% 0% 3%;
+    width: 100%;
+}

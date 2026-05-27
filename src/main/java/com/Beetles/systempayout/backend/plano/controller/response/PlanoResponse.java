@@ -12,6 +12,8 @@ public record PlanoResponse(UUID planoId,
                             String nome,
                             Set<String> alunos,
                             String categoria,
+                            int frequenciaAulas,
+                            boolean ativo,
                             BigDecimal valor) {
 
     public static PlanoResponse toPlanoResponse(Plano plano){
@@ -30,6 +32,8 @@ public record PlanoResponse(UUID planoId,
                 plano.getNome(),
                 alunoPlano,
                 plano.getCategoria(),
+                plano.getFrequenciaAulas(),
+                plano.isAtivo(),
                 plano.getValor()
         );
     }

@@ -10,4 +10,5 @@ import java.util.UUID;
 @Repository
 public interface HistoricoRepository extends JpaRepository<Historico, UUID> {
     List<Historico> findByAlunoAlunoId(UUID id);
+    void deleteByAlunoAlunoId(UUID alunoId);
 }

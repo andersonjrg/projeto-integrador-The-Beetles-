@@ -10,7 +10,6 @@
 </head>
 
 <body>
-    <!-- Essa página deve conter os inputs para o dono registrar novos alunos na lista -->
     <header id="abatopo">
         <a href="index.html">
             <img src="elements/logo-ctjs.png" alt="Logo da Academia">
@@ -21,8 +20,33 @@
             </ul>
         </nav>
     </header>
+    <div id="container">
+        <section id="card-registro">
+            <h2>Registrar Aluno</h2>
+            <form>
+                <p>Nome:</p>
+                <input id="inNome" type="text">
+                <p>Plano:</p>
+                <select id="planos" name="planos">
+                    <option value="">Nenhum</option>
+                </select>
+                <p>Data Início do Plano:</p>
+                <input id="inDataInicio" type="date">
+                <br>
+                <p>Status:</p>
+                <select name="status" id="inStatus">
+                    <option value="PENDENTE">Pendente</option>
+                    <option value="PAGO">Pago</option>
+                    <option value="ATRASADO">Atrasado</option>
+                    <option value="CANCELADO">Cancelado</option>
+                </select>
+                <br>
+                <input id="inSalvar" type="submit" value="Salvar Aluno">
+            </form>
+        </section>
+    </div>
     <section>
-        <h1>Registrar Aluno</h1>
+        <h2>Registrar Aluno</h2>
         <form>
             <p>Nome:</p>
             <input id="inNome" type="text">
@@ -46,7 +70,6 @@
     <script src="js/auth.js"></script>
     <script src="js/api.js"></script>
     <script src="js/registrarAluno.js"></script>
-    </form>
 </body>
 
 </html>

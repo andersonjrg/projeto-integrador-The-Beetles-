@@ -61,4 +61,11 @@ public class HistoricoController {
         var response = HistoricoResponse.toHistoricoResponse(historico);
         return ResponseEntity.ok(response);
     }
+
+    @DeleteMapping("/deletar/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Void> apagarPagamento(@PathVariable UUID id){
+        service.deletarPagamentoId(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }

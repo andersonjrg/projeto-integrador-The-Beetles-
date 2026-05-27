@@ -10,8 +10,6 @@
 </head>
 
 <body>
-    <!-- Essa página vai conter as informações de um aluno específico, bem como seus pagamentos e status para o admin visualizar. Nela também será possível adicionar um novo pagamento para o aluno.
--->
     <header id="abatopo">
         <a href="index.html">
             <img src="elements/logo-ctjs.png" alt="Logo da Academia">
@@ -21,14 +19,42 @@
                 <a href="adminDashboard.html">Painel de Controle</a>
             </ul>
         </nav>
-        </header>
+    </header>
     <section>
         <h1>Perfil do Aluno</h1>
-        <p>Aluno: <span id="nomeAluno"></span></p>
-        <p>Plano: <span id="planoAluno"></span></p>
-        <p>Status: <span id="statusAluno"></span></p>
-        <p>Vencimento: <span id="vencimentoAluno"></span></p>
 
+        <div class="campo-editavel">
+            <label>Nome:</label>
+            <input id="nomeAluno" type="text" disabled>
+            <button class="btEdicao" onclick="habilitarEdicao('nomeAluno')">✏️</button>
+        </div>
+
+        <div class="campo-editavel">
+            <label>Plano:</label>
+            <span id="planoAluno"></span>
+            <select id="selectPlano" style="display:none"></select>
+            <button class="btEdicao" onclick="habilitarEdicaoPlano()">✏️</button>
+        </div>
+
+        <div class="campo-editavel">
+            <label>Status:</label>
+            <span id="statusAluno"></span>
+            <select id="selectStatus" style="display:none">
+                <option value="PAGO">PAGO</option>
+                <option value="ATRASADO">ATRASADO</option>
+                <option value="PENDENTE">PENDENTE</option>
+            </select>
+            <button class="btEdicao" onclick="habilitarEdicaoStatus()">✏️</button>
+        </div>
+
+        <div class="campo-editavel">
+            <label>Vencimento:</label>
+            <span id="vencimentoAluno"></span>
+        </div>
+
+        <button id="btnSalvar" style="display:none" onclick="salvarAluno()">💾 Salvar alterações</button>
+    </section>
+    <section>
         <h2>Registrar Pagamentos</h2>
         <form>
             <p>Valor(R$):</p>

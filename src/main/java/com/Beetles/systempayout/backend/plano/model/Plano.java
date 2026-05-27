@@ -34,6 +34,9 @@ public class Plano {
     @Column(nullable = false)
     private String categoria;
 
+    @Column
+    private int frequenciaAulas;
+
     @Column(precision = 10, scale = 2)
     private BigDecimal valor;
 

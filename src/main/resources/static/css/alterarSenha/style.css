@@ -39,7 +39,7 @@
     margin-bottom: 5%;
 }
 
-#inSenhaAtual, #inSenhaNova, #inConfirm{
+#inEmail, #inSenhaNova{
     background-color: white;
     border: 1px solid #d8661b;
     border-radius: 15px;
