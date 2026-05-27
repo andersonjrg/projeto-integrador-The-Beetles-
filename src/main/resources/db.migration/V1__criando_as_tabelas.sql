@@ -12,7 +12,8 @@ CREATE TABLE planos(
     categoria VARCHAR(255) NOT NULL,
     valor NUMERIC NOT NULL,
     ativo BOOLEAN,
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+   frequencia_aulas INT NOT NULL DEFAULT 0
 );
 
 CREATE TABLE alunos(
@@ -21,7 +22,6 @@ CREATE TABLE alunos(
     plano_escolhido_id UUID REFERENCES planos(plano_id) NULL,
     status VARCHAR(255),
     dia_vencimento TIMESTAMP,
-    role VARCHAR(255),
     data_proximo_vencimento TIMESTAMP,
     data_inicio_plano TIMESTAMP,
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
