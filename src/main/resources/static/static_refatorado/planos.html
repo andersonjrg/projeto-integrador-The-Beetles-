@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Beetles</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/planos/style.css">
+</head>
+
+<body>
+    <header id="abatopo">
+        <a href="index.html">
+            <img src="elements/logo-beetles.png" alt="Logo da Academia">
+        </a>
+        <nav id="navbar">
+            <ul class="sublinks">
+                <a href="adminDashboard.html">Painel de Controle</a>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
+            <h2>Registrar Plano</h2>
+        <section id="registrar-planos">
+            <form>
+                <p>Nome:</p>
+                <input id="inNome" type="text">
+                <p>Categoria:</p>
+                <input id="inCat" type="text">
+                <p>Frequência Aulas(Semanal):</p>
+                <input id="inFreq" type="number">
+                <p>Valor(R$):</p>
+                <input id="inValor" type="number">
+                <p>Status:</p>
+                <select name="status" id="inStatusPlano">
+                    <option value="Ativo">Ativo</option>
+                    <option value="Inativo">Inativo</option>
+                </select>
+                <br>
+                <input id="inSalvar" type="submit" value="Salvar Plano">
+            </form>
+        </section>
+        <section id="section-planos">
+            <h2>Planos</h2>
+            <div class="table-conteiner">
+                <table class="tabela" id="tabelaPlanos"></table>
+            </div>
+        </section>
+    </main>
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/planos.js"></script>
+</body>
+
+</html>

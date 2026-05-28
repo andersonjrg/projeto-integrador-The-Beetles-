@@ -1,0 +1,86 @@
+#abatopo {
+    justify-content: center;
+    gap: 5%;
+}
+
+footer {
+    font-family: var(--fonte02);
+    font-size: 16px;
+}
+
+#container {
+    width: 100%;
+    height: 85vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+#background {
+    width: 100%;
+    height: 85vh;
+    z-index: -1;
+    position: absolute;
+}
+
+#card-login {
+    min-height: 45vh;
+    width: 25%;
+    border-radius: 10px;
+    background-color: #f3b502;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto;
+}
+
+#card-login h2 {
+    margin-bottom: 5%;
+    font-family: var(--fonte02);
+    font-size: 24px;
+}
+
+#inEmail, #inSenhaNova {
+    padding: 0% 3%;
+    margin-bottom: 1vh;
+    min-height: 4vh;
+    width: 100%;
+    border: 1px solid #f2d80c;
+    border-radius: 15px;
+    outline: none;
+    font-size: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
+}
+
+#btnSenha {
+    margin-top: 3%;
+    min-height: 4vh;
+    width: 100%;
+    border: 1px solid white;
+    border-radius: 15px;
+    outline: none;
+    font-weight: bolder;
+    background-color: #fdc103;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
+}
+
+#btnSenha:hover {
+    cursor: pointer;
+    background-color: #ffe800;
+}
+
+#instDuvida {
+    padding: 1.5%;
+    font-weight: bold;
+    text-align: center;
+}

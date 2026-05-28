@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -20,51 +20,53 @@
             </ul>
         </nav>
     </header>
-    <section>
-        <h1>Perfil do Aluno</h1>
-
-        <div class="campo-editavel">
-            <label>Nome:</label>
-            <input id="nomeAluno" type="text" disabled>
-            <button class="btEdicao" onclick="habilitarEdicao('nomeAluno')">✏️</button>
-        </div>
-
-        <div class="campo-editavel">
-            <label>Plano:</label>
-            <span id="planoAluno"></span>
-            <select id="selectPlano" style="display:none"></select>
-            <button class="btEdicao" onclick="habilitarEdicaoPlano()">✏️</button>
-        </div>
-
-        <div class="campo-editavel">
-            <label>Status:</label>
-            <span id="statusAluno"></span>
-            <select id="selectStatus" style="display:none">
-                <option value="PAGO">PAGO</option>
-                <option value="ATRASADO">ATRASADO</option>
-                <option value="PENDENTE">PENDENTE</option>
-            </select>
-            <button class="btEdicao" onclick="habilitarEdicaoStatus()">✏️</button>
-        </div>
-
-        <div class="campo-editavel">
-            <label>Vencimento:</label>
-            <span id="vencimentoAluno"></span>
-        </div>
-
-        <button id="btnSalvar" style="display:none" onclick="salvarAluno()">💾 Salvar alterações</button>
-    </section>
-    <section>
-        <h2>Registrar Pagamentos</h2>
-        <form>
-            <p>Valor(R$):</p>
-            <input id="inValor" type="number">
-            <br>
-            <input type="submit" value="Registrar pagamento">
-        </form>
-        <h2>Histórico Pagamentos</h2>
-        <table id="tabelaPagamentos"></table>
-    </section>
+    <main class="main">
+        <h2>Perfil do Aluno</h2>
+        <section id="perfil-aluno">
+            <div class="campo-editavel">
+                <label>Nome:</label>
+                <input id="nomeAluno" type="text" disabled>
+                <button class="btEdicao" onclick="habilitarEdicao('nomeAluno')">✏️</button>
+            </div>
+            <div id="linha-plano-status">
+                <div class="campo-editavel">
+                    <label>Plano:</label>
+                    <span id="planoAluno"></span>
+                    <select id="selectPlano" style="display:none"></select>
+                    <button class="btEdicao" onclick="habilitarEdicaoPlano()">✏️</button>
+                </div>
+                <div class="campo-editavel">
+                    <label>Status:</label>
+                    <span id="statusAluno"></span>
+                    <select id="selectStatus" style="display:none">
+                        <option value="PAGO">PAGO</option>
+                        <option value="ATRASADO">ATRASADO</option>
+                        <option value="PENDENTE">PENDENTE</option>
+                    </select>
+                    <button class="btEdicao" onclick="habilitarEdicaoStatus()">✏️</button>
+                </div>
+            </div>
+            <div class="campo-editavel">
+                <label>Vencimento:</label>
+                <span id="vencimentoAluno"></span>
+            </div>
+            <button id="btnSalvar" style="display:none" onclick="salvarAluno()">Salvar</button>
+        </section>
+        <section id="section-pagamentos">
+            <h2>Registrar Pagamento</h2>
+            <div id="registrar-pagamento">
+                <form>
+                    <p>Valor(R$):</p>
+                    <input id="inValor" type="number">
+                    <input id="inRegistrarPagamento" type="submit" value="Registrar pagamento">
+                </form>
+            </div>
+            <h2>Histórico Pagamentos</h2>
+            <div class="table-conteiner">
+                <table class="tabela" id="tabelaPagamentos"></table>
+            </div>
+        </section>
+    </main>
     <script src="js/auth.js"></script>
     <script src="js/api.js"></script>
     <script src="js/alunoPagamentos.js"></script>

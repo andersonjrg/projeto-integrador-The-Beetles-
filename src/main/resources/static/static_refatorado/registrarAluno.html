@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Beetles</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/registrarAluno/style.css">
+</head>
+
+<body>
+    <header id="abatopo">
+        <a href="index.html">
+            <img src="elements/logo-beetles.png" alt="Logo da Academia">
+        </a>
+        <nav id="navbar">
+            <ul class="sublinks">
+                <a href="adminDashboard.html">Painel de Controle</a>
+            </ul>
+        </nav>
+    </header>
+    <div id="container">
+        <section id="card-registro">
+            <h2>Registrar Aluno</h2>
+            <form>
+                <p>Nome:</p>
+                <input id="inNome" type="text">
+                <p>Plano:</p>
+                <select id="planos" name="planos">
+                    <option value="">Nenhum</option>
+                </select>
+                <p>Data Início do Plano:</p>
+                <input id="inDataInicio" type="date">
+                <br>
+                <p>Status:</p>
+                <select name="status" id="inStatus">
+                    <option value="PENDENTE">Pendente</option>
+                    <option value="PAGO">Pago</option>
+                    <option value="ATRASADO">Atrasado</option>
+                    <option value="CANCELADO">Cancelado</option>
+                </select>
+                <br>
+                <input id="inSalvar" type="submit" value="Salvar Aluno">
+            </form>
+        </section>
+    </div>
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/registrarAluno.js"></script>
+</body>
+
+</html>

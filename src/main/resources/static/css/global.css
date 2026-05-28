@@ -32,21 +32,28 @@ body {
 }
 
 footer {
-    align-items: center;
-    background-color: #f3b502;
-    display: flex;
     font-family: var(--fonte02);
     font-size: 16px;
     height: 5vh;
+    background-color: #f3b502;
+
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
 
-td {
-    padding: 1%;
-}
+#abatopo {
+    padding: 3%;
+    width: 100%;
+    height: 10vh;
+    background-color: #f3b502;
 
-th {
-    padding: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: sticky;
+    top: 0;
 }
 
 .sublinks {
@@ -54,87 +61,151 @@ th {
     gap: 2vh;
 }
 
-#abatopo {
-    align-items: center;
-    background-color: #f3b502;
-    display: flex;
-    height: 10vh;
-    justify-content: space-between;
-    padding: 0 1.5% 0 1.5%;
-    position: sticky;
-    top: 0;
-    width: 100%;
-}
-
-#btnInstagram{
-    max-height: 4vh;    
+#btnInstagram {
+    padding: 1.5%;
+    max-height: 4vh;
     width: 10%;
     border-radius: 50px;
+    outline: none;
     background: linear-gradient(to right, #833ab4, #fd1d1d);
     color: white;
     box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
-    outline: none;
-    padding: 1.5%;
+
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     flex-direction: row-reverse;
     gap: 2%;
 }
 
-#btnInstagram a{
+#btnInstagram a {
     text-decoration: none;
-}
-table {
-    width: 60%;
-}
-th{
-    padding:2%;
-}
-td{
-    padding:2%;
-    text-align: center;
 }
 
 #btnInstagram:hover {
+    cursor: pointer;
     background: linear-gradient(#c13584, #e1306c);
-    cursor: pointer;transform: scale(1.02);
+    transform: scale(1.02);
     transition: transform 0.1s ease-in;
 }
 
-#btnWhatsapp{
-    max-height: 4vh;    
+#btnWhatsapp {
+    padding: 1.5%;
+    max-height: 4vh;
     width: 10%;
     border-radius: 50px;
+    outline: none;
     background-color: #25d366;
     color: white;
     box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
-    outline: none;
-    padding: 1.5%;
+
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     flex-direction: row-reverse;
     gap: 2%;
 }
 
-#btnWhatsapp a{
+#btnWhatsapp a {
     text-decoration: none;
 }
 
 #btnWhatsapp:hover {
+    cursor: pointer;
     background-color: #128c7e;
-    cursor: pointer;transform: scale(1.02);
+    transform: scale(1.02);
     transition: transform 0.1s ease-in;
 }
 
 #contatos {
     width: 100%;
+
     display: flex;
     justify-content: center;
     gap: 1%;
 }
+
 button {
     padding: 1%;
     margin: 1%;
+}
+
+.main {
+    width: 75%;
+    padding: 1% 2%;
+    margin: 2% 0%;
+    border-radius: 2%;
+    background-color: #f2b983c8;
+    color: black;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+}
+
+.table-conteiner {
+    width: 70%;
+    margin: 15px 0;
+    border-radius: 12px;
+    border: 1px solid #0000004e;
+    overflow: hidden;
+    box-shadow: 0 0 10px -1px rgba(0, 0, 0, 0.099);
+}
+
+.tabela {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.tabela a {
+    color: black;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-right: 1px solid #0000004e;
+    border-bottom: 1px solid #0000004e;
+    background-color: white;
+}
+
+th:last-child, td:last-child {
+    border-right: none;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+table input {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+.paginacao {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: bold;
+    color: black;
+}
+
+.paginacao button {
+    padding: 6px 14px;
+    margin: 0;
+    border-radius: 8px;
+    border: 1px solid #f3b502;
+    background-color: white;
+    color: #e67700;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.paginacao button:hover {
+    background-color: #f3b502;
+    color: white;
 }

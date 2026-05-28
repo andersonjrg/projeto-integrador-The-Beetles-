@@ -3,80 +3,84 @@
     gap: 5%;
 }
 
-#container{
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    height: 85vh;
-    justify-content: center;
-    position: relative;
-    width: 100%;
-}
-
-#background{
-    height: 85vh;
-    position: absolute;
-    width: 100%;
-    z-index: -1;
-}
-
-#card-login{
-    align-items: center;
-    background-color: #f3b502;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0 auto;
-    min-height: 45vh;
-    width: 25%;
-}
-
-#card-login h2{
-    font-family: var(--fonte02);
-    font-size: 24px;
-    margin-bottom: 5%;
-}
-
-#inEmail, #inSenhaNova{
-    background-color: white;
-    border: 1px solid #f2d80c;
-    border-radius: 15px;
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
-    font-size: 12px;
-    margin-bottom: 1vh;
-    min-height: 4vh;
-    outline: none;
-    padding: 0% 3% 0% 3%;
-    width: 100%;
-}
-
-#btnSenha{
-    background-color: #fdc103;
-    border: 1px solid white;
-    border-radius: 15px;
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
-    color: white;
-    font-weight: bolder;
-    margin-top: 3%;
-    min-height: 4vh;
-    outline: none;
-    width: 100%;
-}
-
-#btnSenha:hover{
-    background-color: #ffe800;
-    cursor: pointer;
-}
-
-#instDuvida{
-    font-weight: bold;
-    padding: 1.5%;
-    text-align: center;
-}
-
-footer{
+footer {
     font-family: var(--fonte02);
     font-size: 16px;
+}
+
+#container {
+    width: 100%;
+    height: 85vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+#background {
+    width: 100%;
+    height: 85vh;
+    z-index: -1;
+    position: absolute;
+}
+
+#card-login {
+    min-height: 45vh;
+    width: 25%;
+    border-radius: 10px;
+    background-color: #f3b502;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto;
+}
+
+#card-login h2 {
+    margin-bottom: 5%;
+    font-family: var(--fonte02);
+    font-size: 24px;
+}
+
+#inEmail, #inSenhaNova {
+    padding: 0% 3%;
+    margin-bottom: 1vh;
+    min-height: 4vh;
+    width: 100%;
+    border: 1px solid #f2d80c;
+    border-radius: 15px;
+    outline: none;
+    font-size: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
+}
+
+#btnSenha {
+    margin-top: 3%;
+    min-height: 4vh;
+    width: 100%;
+    border: 1px solid white;
+    border-radius: 15px;
+    outline: none;
+    font-weight: bolder;
+    background-color: #fdc103;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
+}
+
+#btnSenha:hover {
+    cursor: pointer;
+    background-color: #ffe800;
+}
+
+#instDuvida {
+    padding: 1.5%;
+    font-weight: bold;
+    text-align: center;
 }

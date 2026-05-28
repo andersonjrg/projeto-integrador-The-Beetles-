@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Beetles</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/adminDashboard/style.css">
+</head>
+
+<body>
+    <header id="abatopo">
+        <a href="index.html">
+            <img src="elements/logo-beetles.png" alt="Logo da Academia">
+        </a>
+        <nav id="navbar">
+            <ul class="sublinks">
+                <a href="alterarSenha.html">Alterar minha senha</a>
+                <a href="registrarAluno.html">Registrar alunos</a>
+                <a href="planos.html">Planos</a>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
+        <h2>Tabela Alunos</h2>
+        <div class="table-conteiner">
+            <table class="tabela" id="tabelaAlunos"></table>
+        </div>
+        <div id="paginacaoAlunos"></div>
+        <h2>Tabela Pagamentos</h2>
+        <div class="table-conteiner">
+            <table class="tabela" id="tabelaPagamentos"></table>
+        </div>
+
+        <div id="paginacaoPagamentos"></div>
+    </main>
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/alunos.js"></script>
+    <script src="js/pagamentos.js"></script>
+
+</body>
+
+</html>

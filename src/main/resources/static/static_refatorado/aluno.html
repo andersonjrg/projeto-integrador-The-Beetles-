@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Beetles</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/aluno/style.css">
+</head>
+
+<body>
+    <header id="abatopo">
+        <a href="index.html">
+            <img src="elements/logo-beetles.png" alt="Logo da Academia">
+        </a>
+        <nav id="navbar">
+            <ul class="sublinks">
+                <a href="adminDashboard.html">Painel de Controle</a>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h1>Perfil do Aluno</h1>
+
+        <div class="campo-editavel">
+            <label>Nome:</label>
+            <input id="nomeAluno" type="text" disabled>
+            <button class="btEdicao" onclick="habilitarEdicao('nomeAluno')">✏️</button>
+        </div>
+
+        <div class="campo-editavel">
+            <label>Plano:</label>
+            <span id="planoAluno"></span>
+            <select id="selectPlano" style="display:none"></select>
+            <button class="btEdicao" onclick="habilitarEdicaoPlano()">✏️</button>
+        </div>
+
+        <div class="campo-editavel">
+            <label>Status:</label>
+            <span id="statusAluno"></span>
+            <select id="selectStatus" style="display:none">
+                <option value="PAGO">PAGO</option>
+                <option value="ATRASADO">ATRASADO</option>
+                <option value="PENDENTE">PENDENTE</option>
+            </select>
+            <button class="btEdicao" onclick="habilitarEdicaoStatus()">✏️</button>
+        </div>
+
+        <div class="campo-editavel">
+            <label>Vencimento:</label>
+            <span id="vencimentoAluno"></span>
+        </div>
+
+        <button id="btnSalvar" style="display:none" onclick="salvarAluno()">💾 Salvar alterações</button>
+    </section>
+    <section>
+        <h2>Registrar Pagamentos</h2>
+        <form>
+            <p>Valor(R$):</p>
+            <input id="inValor" type="number">
+            <br>
+            <input type="submit" value="Registrar pagamento">
+        </form>
+        <h2>Histórico Pagamentos</h2>
+        <div class="table-conteiner">
+            <table class="tabela" id="tabelaPagamentos"></table>
+        </div>
+    </section>
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/alunoPagamentos.js"></script>
+</body>
+
+</html>

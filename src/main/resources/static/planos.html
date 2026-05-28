@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -20,32 +20,35 @@
             </ul>
         </nav>
     </header>
-    <section>  
-        <div id="container">
-        <section id="card-planos">
-        <h2>Registrar Plano</h2>
-        <form>
-            <p>Nome:</p>
-            <input id="inNome" type="text">
-            <p>Categoria:</p>
-            <input id="inCat" type="text">
-            <p>Frequência Aulas(Semanal):</p>
-            <input id="inFreq" type="number">
-            <p>Valor(R$):</p>
-            <input id="inValor" type="number">
-            <p>Status:</p>
-            <select name="status" id="inStatusPlano">
-                <option value="Ativo">Ativo</option>
-                <option value="Inativo">Inativo</option>
-            </select>
-            <br>
-            <input id="inSalvar" type="submit" value="Salvar Plano">
-        </form>
+    <main class="main">
+            <h2>Registrar Plano</h2>
+        <section id="registrar-planos">
+            <form>
+                <p>Nome:</p>
+                <input id="inNome" type="text">
+                <p>Categoria:</p>
+                <input id="inCat" type="text">
+                <p>Frequência Aulas(Semanal):</p>
+                <input id="inFreq" type="number">
+                <p>Valor(R$):</p>
+                <input id="inValor" type="number">
+                <p>Status:</p>
+                <select name="status" id="inStatusPlano">
+                    <option value="Ativo">Ativo</option>
+                    <option value="Inativo">Inativo</option>
+                </select>
+                <br>
+                <input id="inSalvar" type="submit" value="Salvar Plano">
+            </form>
         </section>
-        </div>
-        <h1>Planos</h1>
-        <table id="tabelaPlanos"></table>
-    </section>
+        <section id="section-planos">
+            <h2>Planos</h2>
+            <div class="table-conteiner">
+                <table class="tabela" id="tabelaPlanos"></table>
+            </div>
+            <div id="paginacaoPlanos"></div>
+        </section>
+    </main>
     <script src="js/auth.js"></script>
     <script src="js/api.js"></script>
     <script src="js/planos.js"></script>

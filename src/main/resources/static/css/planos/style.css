@@ -1,43 +1,77 @@
+html, body {
+    min-height: 100vh;
+}
+
+body {
+    width: 100%;
+    background-color: white;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5%;
+}
+
 #abatopo {
     justify-content: center;
     gap: 5%;
 }
 
-#card-planos {
-    align-items: center;
-    background-color: #f3b502;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0 auto;
-    min-height: 35vh;
-    padding: 2%;
-    width: 25%;
+h2 {
+    margin: 1% 0%;
+    font-weight: 800;
+    word-spacing: 15%;
 }
 
-#container{
-    align-items: center;
+.main {
+    width: 80%;
+    gap: 4%;
+}
+
+#registrar-planos {
+    padding: 2%;
+    min-height: 35vh;
+    width: 50%;
+    border-radius: 10px;
+    background-color: #f3b502;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 5px;
+
     display: flex;
-    height: 85vh;
-    justify-content: center;
     flex-direction: column;
-    position: relative;
-    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto;
 }
 
 #inNome, #inCat, #inFreq, #inValor {
-    background-color: white;
-    border: 1px solid #f2d80c;
-    border-radius: 15px;
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
-    font-size: 12px;
+    padding: 0% 3%;
     margin-bottom: 1vh;
     min-height: 4vh;
-    outline: none;
-    padding: 0% 3% 0% 3%;
     width: 100%;
+    border: 1px solid #f2d80c;
+    border-radius: 15px;
+    outline: none;
+    font-size: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
+}
+
+#inStatusPlano, #inSalvar {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    min-height: 4vh;
+    width: 100%;
+    border: 1px solid white;
+    border-radius: 15px;
+    outline: none;
+    background-color: #fdc103;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
+
+    text-align: center;
 }
 
 #inSalvar {
@@ -45,40 +79,33 @@
 }
 
 #inSalvar:hover {
-    background-color: #ffe800;
     cursor: pointer;
-    font-weight: bolder;
+    background-color: #ffe800;
 }
 
-#inStatusPlano, #inSalvar {
-    background-color: #fdc103;
-    border: 1px solid white;
-    border-radius: 15px;
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
-    color: white;
-    margin-bottom: 5%;
-    margin-top: 5%;
-    min-height: 4vh;
-    outline: none;
-    text-align: center;
+#section-planos {
     width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#tabelaPlanos {
-    width: 45%;
+#tabelaPlanos th,
+#tabelaPlanos td {
+    padding: 8px 10px;
 }
 
 table input:disabled {
-    background: transparent;
     border: none;
-    color: white;
+    background: transparent;
+    color: black;
     cursor: default;
 }
 
 table input:enabled {
-    background: #1e1e1e;
     border: 1px solid #f3b502;
     border-radius: 4px;
+    background: #1e1e1e;
     color: white;
-    padding: 4px 8px;
 }

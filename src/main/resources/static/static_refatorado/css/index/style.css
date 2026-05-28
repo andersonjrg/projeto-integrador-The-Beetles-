@@ -1,0 +1,101 @@
+button {
+    margin-top: 3%;
+    height: 5vh;
+    width: 90%;
+    border: 1px solid white;
+    border-radius: 15px;
+    font-weight: bolder;
+    background-color: #fdc103;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #ffe800;
+    text-decoration: underline;
+    text-decoration-color: white;
+}
+
+.opções {
+    padding: 3%;
+    margin: 3% 0% 3% 3%;
+    width: 25%;
+    border-radius: 15px;
+    background-color: #f3b502;
+    box-shadow: 1% 0.5% 0 0 rgb(0, 0, 0, 0.05);
+
+    text-align: center;
+}
+
+.opções h3 {
+    padding-bottom: 1%;
+}
+
+#btnInstagram {
+    width: 4%;
+    right: 6%;
+    bottom: 1.5%;
+    position: fixed;
+}
+
+#btnWhatsapp {
+    width: 4%;
+    right: 1.5%;
+    bottom: 1.5%;
+    position: fixed;
+}
+
+#conteiner-midia {
+    height: 50vh;
+    background-color: #454545;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#midia h2 {
+    height: 10vh;
+    background: linear-gradient(#0c0c0c 0.01%, #454545 99.99%);
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+#localização {
+    height: 30vh;
+    background: linear-gradient(#454545 1%, #ffffff 99%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#sobre {
+    padding: 10%;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to bottom, transparent 70%, #0c0c0c), url("../../elements/bg-n1.png") center/cover;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+#sobre h2 {
+    padding-bottom: 1.5%;
+}
+
+#planos {
+    padding: 3%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}

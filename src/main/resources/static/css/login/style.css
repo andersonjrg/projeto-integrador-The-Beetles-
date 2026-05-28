@@ -1,84 +1,87 @@
-h2{
-    font-family: var(--fonte02);
-    font-size: 24px;
-    margin-bottom: 5%;
-}
-
-footer{
-    font-family: var(--fonte02);
-    font-size: 16px;
-}
-
 #abatopo {
     justify-content: center;
 }
 
-#container{
-    align-items: center;
-    display: flex;
+footer {
+    font-family: var(--fonte02);
+    font-size: 16px;
+}
+
+h2 {
+    margin-bottom: 5%;
+    font-family: var(--fonte02);
+    font-size: 24px;
+}
+
+#container {
+    width: 100%;
     height: 85vh;
-    justify-content: center;
+
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
     position: relative;
-    width: 100%;
 }
 
-#background{
+#background {
+    width: 100%;
     height: 85vh;
-    position: absolute;
-    width: 100%;
     z-index: -1;
+    position: absolute;
 }
 
-#card-login{
-    align-items: center;
-    background-color: #f3b502;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0 auto;
+#card-login {
     min-height: 35vh;
     width: 25%;
+    border-radius: 10px;
+    background-color: #f3b502;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto;
 }
 
-#inEmail, #inSenha{
-    background-color: white;
-    border: 1px solid #f2d80c;
-    border-radius: 15px;
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
-    font-size: 12px;
+#inEmail, #inSenha {
+    padding: 0% 3%;
     margin-bottom: 1vh;
     min-height: 4vh;
-    outline: none;
-    padding: 0% 3% 0% 3%;
     width: 100%;
+    border: 1px solid #f2d80c;
+    border-radius: 15px;
+    outline: none;
+    font-size: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
 }
 
-#btnLogin{
-    background-color: #fdc103;
-    border: 1px solid white;
-    border-radius: 15px;
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
-    color: white;
-    font-weight: bolder;
+#btnLogin {
     margin-top: 3%;
     min-height: 4vh;
-    outline: none;
     width: 100%;
+    border: 1px solid white;
+    border-radius: 15px;
+    outline: none;
+    font-weight: bolder;
+    background-color: #fdc103;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
 }
 
-#btnLogin:hover{
-    background-color: #ffe800;
+#btnLogin:hover {
     cursor: pointer;
-    font-weight: bolder;
+    background-color: #ffe800;
     text-decoration: underline;
     text-decoration-color: white;
 }
 
-#instRegistro{
-    font-weight: bold;
+#instRegistro {
     padding: 1.5%;
+    font-weight: bold;
     text-align: center;
 }

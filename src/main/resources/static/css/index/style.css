@@ -1,28 +1,29 @@
 button {
-    background-color: #fdc103;
+    margin-top: 3%;
+    height: 5vh;
+    width: 90%;
     border: 1px solid white;
     border-radius: 15px;
     font-weight: bolder;
-    height: 5vh;
-    margin-top: 3%;
-    width: 90%;
+    background-color: #fdc103;
 }
 
 button:hover {
-    background-color: #ffe800;
     cursor: pointer;
+    background-color: #ffe800;
     text-decoration: underline;
     text-decoration-color: white;
 }
 
 .opções {
-    background-color: #f3b502;
-    border-radius: 15px;
-    box-shadow: 1% 0.5% 0 0 rgb(0, 0, 0, 0.05);
-    margin: 3% 0% 3% 3%;
     padding: 3%;
-    text-align: center;
+    margin: 3% 0% 3% 3%;
     width: 25%;
+    border-radius: 15px;
+    background-color: #f3b502;
+    box-shadow: 1% 0.5% 0 0 rgb(0, 0, 0, 0.05);
+
+    text-align: center;
 }
 
 .opções h3 {
@@ -30,54 +31,59 @@ button:hover {
 }
 
 #btnInstagram {
-    position: fixed;
     width: 4%;
     right: 6%;
     bottom: 1.5%;
+    position: fixed;
 }
 
 #btnWhatsapp {
-    position: fixed;
     width: 4%;
     right: 1.5%;
     bottom: 1.5%;
+    position: fixed;
 }
 
 #conteiner-midia {
-    align-items: center;
-    background-color: #454545;
-    display: flex;
     height: 50vh;
-    justify-content: center;
-}
+    background-color: #454545;
 
-#localização {
-    align-items: center;
-    background: linear-gradient(#454545 1%, #ffffff 99%);
     display: flex;
-    flex-direction: column;
-    height: 30vh;
+    align-items: center;
     justify-content: center;
 }
 
 #midia h2 {
-    align-items: flex-end;
-    background: linear-gradient(#0c0c0c 0.01%, #454545 99.99%);
-    display: flex;
     height: 10vh;
+    background: linear-gradient(#0c0c0c 0.01%, #454545 99.99%);
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+#localização {
+    height: 30vh;
+    background: linear-gradient(#454545 1%, #ffffff 99%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
 }
 
 #sobre {
-    align-items: center;
+    padding: 10%;
+    width: 100%;
+    height: 100vh;
     background: linear-gradient(to bottom, transparent 70%, #0c0c0c), url("../../elements/bg-n1.png") center/cover;
+
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    align-items: center;
     justify-content: center;
-    padding: 10%;
+
     text-align: center;
-    width: 100%;
 }
 
 #sobre h2 {
@@ -85,10 +91,11 @@ button:hover {
 }
 
 #planos {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
     padding: 3%;
     width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }

@@ -1,0 +1,52 @@
+html, body {
+    min-height: 100vh;
+}
+
+body {
+    width: 100%;
+    background-color: white;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5%;
+}
+
+#abatopo {
+    justify-content: center;
+    gap: 5%;
+}
+
+h2 {
+    font-weight: 800;
+    word-spacing: 15%;
+}
+
+.campo-editavel {
+    margin: 8px 0;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.campo-editavel input:disabled {
+    border: none;
+    background: transparent;
+    color: #aaa;
+    cursor: default;
+}
+
+.campo-editavel input:enabled {
+    padding: 4px 8px;
+    border: 1px solid #f3b502;
+    border-radius: 4px;
+    background: #1e1e1e;
+    color: white;
+}
+
+.btEdicao {
+    padding: 1%;
+}

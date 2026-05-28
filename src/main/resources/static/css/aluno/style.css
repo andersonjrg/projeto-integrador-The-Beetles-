@@ -1,30 +1,186 @@
+html, body {
+    min-height: 100vh;
+}
+
+body {
+    width: 100%;
+    background-color: white;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5%;
+}
+
 #abatopo {
     justify-content: center;
     gap: 5%;
 }
 
+h2 {
+    margin: 1% 0%;
+    font-weight: 800;
+    word-spacing: 15%;
+}
+
+.main {
+    width: 80%;
+    gap: 4%;
+}
+
+#perfil-aluno {
+    padding: 2%;
+    min-height: 35vh;
+    width: 50%;
+    border-radius: 10px;
+    background-color: #f3b502;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1vh;
+
+    margin: 0 auto;
+}
+
+#perfil-aluno h1 {
+    margin-bottom: 5%;
+    font-family: var(--fonte02);
+    font-size: 24px;
+    text-align: center;
+}
+
 .campo-editavel {
+    margin-bottom: 1vh;
+
     display: flex;
     align-items: center;
     gap: 10px;
-    margin: 8px 0;
 }
 
+.campo-editavel label {
+    font-weight: bold;
+    width: 110px;
+    flex-shrink: 0;
+}
+
+.campo-editavel input,
+.campo-editavel select,
+.campo-editavel span {
+    padding: 0% 3%;
+    min-height: 4vh;
+    width: 100%;
+    border: 1px solid #f2d80c;
+    border-radius: 15px;
+    outline: none;
+    font-size: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
+
+    display: flex;
+    align-items: center;
+    color: black;
+    text-align: center;
+}
+
+
 .campo-editavel input:disabled {
-    background: transparent;
-    border: none;
-    color: #aaa;
     cursor: default;
 }
 
-.campo-editavel input:enabled {
-    background: #1e1e1e;
-    border: 1px solid #f3b502;
-    border-radius: 4px;
-    color: white;
-    padding: 4px 8px;
+#linha-plano-status {
+    display: flex;
+    gap: 15px;
 }
 
-.btEdicao{
-    padding: 1%;
+#linha-plano-status .campo-editavel {
+    flex: 1;
+}
+
+.btEdicao {
+    padding: 4px 8px;
+    border-radius: 8px;
+    border: 1px solid #f2d80c;
+    background-color: white;
+    cursor: pointer;
+}
+
+#btnSalvar {
+    margin-top: 5%;
+    margin-left: 40%;
+    min-height: 4vh;
+    width: 20%;
+    border: 1px solid white;
+    border-radius: 15px;
+    outline: none;
+    font-weight: bolder;
+    background-color: #fdc103;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
+
+    cursor: pointer;
+    text-align: center;
+}
+
+#btnSalvar:hover {
+    background-color: #ffe800;
+}
+
+#section-pagamentos {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#registrar-pagamento {
+    padding: 2%;
+    min-height: 20vh;
+    width: 35%;
+    border-radius: 10px;
+    background-color: #f3b502;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin: 0 auto 2% auto;
+}
+
+#inValor {
+    padding: 0% 3%;
+    margin-bottom: 1vh;
+    min-height: 4vh;
+    width: 100%;
+    border: 1px solid #f2d80c;
+    border-radius: 15px;
+    outline: none;
+    font-size: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
+}
+
+#inRegistrarPagamento {
+    margin-top: 5%;
+    min-height: 4vh;
+    width: 100%;
+    border: 1px solid white;
+    border-radius: 15px;
+    outline: none;
+    font-weight: bolder;
+    background-color: #fdc103;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
+
+    cursor: pointer;
+    text-align: center;
+}
+
+#inRegistrarPagamento:hover {
+    background-color: #ffe800;
 }
