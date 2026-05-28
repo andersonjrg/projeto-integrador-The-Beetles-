@@ -13,10 +13,6 @@ footer{
     justify-content: center;
 }
 
-#altsenha {
-    color: #e97123;
-}
-
 #container{
     align-items: center;
     display: flex;
@@ -36,7 +32,7 @@ footer{
 
 #card-login{
     align-items: center;
-    background-color: #e97123;
+    background-color: #f3b502;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 5px;
     display: flex;
@@ -49,7 +45,7 @@ footer{
 
 #inEmail, #inSenha{
     background-color: white;
-    border: 1px solid #d8661b;
+    border: 1px solid #f2d80c;
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
     font-size: 12px;
@@ -61,7 +57,7 @@ footer{
 }
 
 #btnLogin{
-    background-color: #f88a40;
+    background-color: #fdc103;
     border: 1px solid white;
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
@@ -74,8 +70,9 @@ footer{
 }
 
 #btnLogin:hover{
-    background-color: #eb7e35;
+    background-color: #ffe800;
     cursor: pointer;
+    font-weight: bolder;
     text-decoration: underline;
     text-decoration-color: white;
 }

@@ -5,7 +5,7 @@
 
 #card-registro{
     align-items: center;
-    background-color: #e97123;
+    background-color: #f3b502;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 5px;
     display: flex;
@@ -28,7 +28,7 @@
 }
 
 #inDataInicio, #inSalvar, #inStatus, #planos {
-    background-color: #f88a40;
+    background-color: #fdc103;
     border: 1px solid white;
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
@@ -43,7 +43,7 @@
 
 #inNome {
     background-color: white;
-    border: 1px solid #d8661b;
+    border: 1px solid #f2d80c;
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
     font-size: 12px;
@@ -52,4 +52,13 @@
     outline: none;
     padding: 0% 3% 0% 3%;
     width: 100%;
+}
+
+#inSalvar {
+    font-weight: bolder;
+}
+
+#inSalvar:hover {
+    background-color: #ffe800;
+    cursor: pointer;
 }

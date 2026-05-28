@@ -12,7 +12,7 @@
 <body>
     <header id="abatopo">
         <a href="index.html">
-            <img src="elements/logo-ctjs.png" alt="Logo da Academia">
+            <img src="elements/logo-beetles.png" alt="Logo da Academia">
         </a>
         <nav id="navbar">
             <ul class="sublinks">
@@ -20,9 +20,9 @@
             </ul>
         </nav>
     </header>
-    <section>
-        <h1>Planos</h1>
-        <table id="tabelaPlanos"></table>
+    <section>  
+        <div id="container">
+        <section id="card-planos">
         <h2>Registrar Plano</h2>
         <form>
             <p>Nome:</p>
@@ -39,8 +39,12 @@
                 <option value="Inativo">Inativo</option>
             </select>
             <br>
-            <input type="submit" value="Salvar Plano">
+            <input id="inSalvar" type="submit" value="Salvar Plano">
         </form>
+        </section>
+        </div>
+        <h1>Planos</h1>
+        <table id="tabelaPlanos"></table>
     </section>
     <script src="js/auth.js"></script>
     <script src="js/api.js"></script>

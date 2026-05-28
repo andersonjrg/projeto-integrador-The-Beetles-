@@ -1,5 +1,5 @@
 button {
-    background-color: #e97123;
+    background-color: #fdc103;
     border: 1px solid white;
     border-radius: 15px;
     font-weight: bolder;
@@ -9,14 +9,14 @@ button {
 }
 
 button:hover {
-    background-color: #eb7e35;
+    background-color: #ffe800;
     cursor: pointer;
     text-decoration: underline;
     text-decoration-color: white;
 }
 
 .opções {
-    background-color: #e97123;
+    background-color: #f3b502;
     border-radius: 15px;
     box-shadow: 1% 0.5% 0 0 rgb(0, 0, 0, 0.05);
     margin: 3% 0% 3% 3%;

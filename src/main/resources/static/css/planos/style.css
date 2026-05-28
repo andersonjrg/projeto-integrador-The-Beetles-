@@ -3,9 +3,71 @@
     gap: 5%;
 }
 
+#card-planos {
+    align-items: center;
+    background-color: #f3b502;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    min-height: 35vh;
+    padding: 2%;
+    width: 25%;
+}
+
+#container{
+    align-items: center;
+    display: flex;
+    height: 85vh;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+
+#inNome, #inCat, #inFreq, #inValor {
+    background-color: white;
+    border: 1px solid #f2d80c;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
+    font-size: 12px;
+    margin-bottom: 1vh;
+    min-height: 4vh;
+    outline: none;
+    padding: 0% 3% 0% 3%;
+    width: 100%;
+}
+
+#inSalvar {
+    font-weight: bolder;
+}
+
+#inSalvar:hover {
+    background-color: #ffe800;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+#inStatusPlano, #inSalvar {
+    background-color: #fdc103;
+    border: 1px solid white;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
+    color: white;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    min-height: 4vh;
+    outline: none;
+    text-align: center;
+    width: 100%;
+}
+
 #tabelaPlanos {
     width: 45%;
 }
+
 table input:disabled {
     background: transparent;
     border: none;
@@ -15,7 +77,7 @@ table input:disabled {
 
 table input:enabled {
     background: #1e1e1e;
-    border: 1px solid #e97123;
+    border: 1px solid #f3b502;
     border-radius: 4px;
     color: white;
     padding: 4px 8px;
