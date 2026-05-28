@@ -29,7 +29,7 @@ public class HistoricoService {
     @Transactional
     public Historico salvarHistorico(HistoricoRequest request) {
         Aluno aluno = alunoRepository.findById(request.alunoId())
-                .orElseThrow(() -> new IdNotFoundException(request.alunoId()));
+                .orElseThrow(() -> new IdNotFoundException("Usuário não encontrado."));
 
         Historico historico = new Historico();
         historico.setAluno(aluno);
@@ -49,13 +49,13 @@ public class HistoricoService {
     public HistoricoResponse verHistoricoId(UUID id){
         return repository.findById(id)
                 .map(HistoricoResponse::toHistoricoResponse)
-                .orElseThrow(()-> new IdNotFoundException(id));
+                .orElseThrow(()-> new IdNotFoundException("Usuário não encontrado."));
     }
 
     @Transactional
     public Historico registrarDataDeConfirmacao(UUID id){
         Historico historico = repository.findById(id)
-                .orElseThrow(()-> new IdNotFoundException(id));
+                .orElseThrow(()-> new IdNotFoundException("Pagamento não encontrado."));
         historico.dataConfirmation();
         repository.save(historico);
         return historico;
@@ -69,7 +69,7 @@ public class HistoricoService {
     }
     public void deletarPagamentoId (UUID id){
         if(!repository.existsById(id)){
-            throw new RuntimeException("Esse pagamento não foi encontrado no sistema");
+            throw new RuntimeException("Pagamento não encontrado.");
         }
         repository.deleteById(id);
 

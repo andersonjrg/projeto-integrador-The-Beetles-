@@ -5,6 +5,7 @@ import com.Beetles.systempayout.backend.admin.controller.response.AdminResponse;
 import com.Beetles.systempayout.backend.admin.model.Admin;
 import com.Beetles.systempayout.backend.admin.repository.AdminRepository;
 import com.Beetles.systempayout.backend.shared.exception.EmailNotFoundException;
+import com.Beetles.systempayout.backend.shared.exception.IdNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,11 +37,14 @@ public class AdminService{
     public AdminResponse buscarPorEmail(String email){
         return repository.findByEmail(email.toLowerCase())
             .map(AdminResponse::toAdminResponse)
-                .orElseThrow(()-> new EmailNotFoundException(email));
+                .orElseThrow(()-> new EmailNotFoundException("Admin não encontrado."));
     }
 
     @Transactional
     public void deletarAdmin(UUID id){
+        if (!repository.existsById(id)) {
+            throw new IdNotFoundException("Admin não encontrado.");
+        }
         repository.deleteById(id);
     }
 }

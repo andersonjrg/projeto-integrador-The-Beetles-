@@ -47,7 +47,7 @@ public class SecurityController {
     }
 
     @PostMapping("/admin/alterarsenha")
-    public ResponseEntity<Map<String, String>>  alterarSenha(@RequestBody AlterarSenhaRequest request) {
+    public ResponseEntity<Map<String, String>>  alterarSenha(@RequestBody @Valid AlterarSenhaRequest request) {
         securityService.alterarSenha(request);
         return ResponseEntity.ok(Map.of("message", "Senha alterada com sucesso"));
     }

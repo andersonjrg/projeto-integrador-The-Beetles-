@@ -56,13 +56,13 @@ public class PlanosService {
     public PlanoResponse mostrarPlanoEspecificoPeloId(UUID id){
         return repository.findById(id)
                 .map(PlanoResponse::toPlanoResponse)
-                .orElseThrow(()-> new IdNotFoundException(id));
+                .orElseThrow(()-> new IdNotFoundException("Plano não encontrado."));
     }
 
     @Transactional
     public Plano modificarPlano(PlanoRequest request, UUID id){
         Plano plano = repository.findById(id)
-                .orElseThrow(()-> new IdNotFoundException(id));
+                .orElseThrow(()-> new IdNotFoundException("Plano não encontrado."));
 
         List<Aluno> aluno = new ArrayList<>();
         if (request.alunos() != null && !request.alunos().isEmpty()) {
@@ -87,7 +87,7 @@ public class PlanosService {
     @Transactional
     public void deletarPlano(UUID id){
         if(!repository.existsById(id)){
-            throw new IdNotFoundException(id);
+            throw new IdNotFoundException("Plano não encontrado.");
         }
         List<Aluno> alunos = alunoRepository.findByPlanoEscolhidoIdPlanoId(id);
         for (Aluno aluno : alunos) {

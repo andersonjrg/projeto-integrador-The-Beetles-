@@ -14,7 +14,7 @@ async function request(endpoint, options = {}) {
     const text = await response.text();
     const data = text ? JSON.parse(text): {};
     if (!response.ok) {
-        throw new Error((data.message) || "Erro no sistema")
+        throw new Error((data.detail) || "Erro no sistema")
     }
     return data;
 }

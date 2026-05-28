@@ -2,6 +2,7 @@ package com.Beetles.systempayout.backend.security.securityService;
 
 import com.Beetles.systempayout.backend.admin.repository.AdminRepository;
 import com.Beetles.systempayout.backend.security.securityController.request.AlterarSenhaRequest;
+import com.Beetles.systempayout.backend.shared.exception.EmailNotFoundException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,8 +23,8 @@ public class SecurityService implements UserDetailsService {
 
     public String alterarSenha(AlterarSenhaRequest request){
         var admin = adminRepository.findByEmail(request.email().toLowerCase())
-            .orElseThrow(() -> new RuntimeException("email não encontrado"));
-            
+            .orElseThrow(() -> new EmailNotFoundException("Email não encontrado."));
+
         admin.setSenha(encoder.encode(request.senha()));
         adminRepository.save(admin);
         return "Senha Alterada com sucesso";

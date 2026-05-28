@@ -30,7 +30,7 @@ public class SecurityConfig {
                 .csrf(auth -> auth.disable()).
                 sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).
                 authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.POST, "/auth/login", "/auth/admin/register").permitAll().
+                        .requestMatchers(HttpMethod.POST, "/auth/login", "/auth/admin/register","/auth/admin/alterarsenha").permitAll().
                         requestMatchers("/js/**","/css/**","/images/**","/", "/*.html", "/elements/**").permitAll().
                         anyRequest().authenticated())
                 .addFilterBefore(securityFilter.getObject(), UsernamePasswordAuthenticationFilter.class)
