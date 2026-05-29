@@ -1,4 +1,4 @@
-const BASE_URL = "https://thebeetlesmanager.up.railway.app/";
+const BASE_URL = "https://thebeetlesmanager.up.railway.app";
 
 
 async function request(endpoint, options = {}) {
