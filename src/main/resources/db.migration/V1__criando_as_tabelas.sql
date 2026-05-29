@@ -1,6 +1,6 @@
 CREATE TABLE administrador(
     admin_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    role VARCHAR(255),
+    role VARCHAR(50),
     nome VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     senha VARCHAR(255) NOT NULL

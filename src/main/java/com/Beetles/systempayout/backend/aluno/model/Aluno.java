@@ -30,6 +30,8 @@ public class Aluno {
     @JoinColumn(name = "plano_escolhido_id", nullable = true)
     private Plano planoEscolhidoId;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
     private Enum_Status status;
 
     private LocalDateTime diaVencimento;

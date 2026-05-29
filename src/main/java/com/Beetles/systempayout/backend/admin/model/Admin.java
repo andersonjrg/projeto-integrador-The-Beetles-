@@ -27,6 +27,7 @@ public class Admin implements UserDetails {
     @Column(name = "admin_id", updatable = false)
     private UUID adminId;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private Enums_roles role = null;
 
