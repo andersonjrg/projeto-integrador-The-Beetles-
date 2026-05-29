@@ -34,7 +34,8 @@ public class Historico {
     @Column(name = "valor_cobrado", precision = 10, scale = 2, nullable = false)
     @PositiveOrZero(message = "O valor cobrado não pode ser negativo")
     private BigDecimal valorCobrado;
-
+    
+    @Enumerated(EnumType.STRING)
     @Column(name = "status_pagamento", nullable = false)
     private Enum_Status statusPagamento;
 
