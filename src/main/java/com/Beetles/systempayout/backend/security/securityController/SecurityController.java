@@ -14,6 +14,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -49,6 +50,7 @@ public class SecurityController {
     }
 
     @PostMapping("/admin/alterarsenha")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Map<String, String>>  alterarSenha(@RequestBody @Valid AlterarSenhaRequest request) {
         securityService.alterarSenha(request);
         return ResponseEntity.ok(Map.of("message", "Senha alterada com sucesso"));
