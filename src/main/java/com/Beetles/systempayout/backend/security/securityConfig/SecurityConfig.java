@@ -31,10 +31,9 @@ public class SecurityConfig {
                 sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).
                 authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/auth/login", "/auth/admin/register","/auth/admin/alterarsenha").permitAll().
-                        requestMatchers("/js/**","/css/**","/images/**","/index.html", "/login.html", "/elements/**").permitAll().
+                        requestMatchers("/js/**","/css/**","/images/**","/**.html", "/", "/elements/**").permitAll().
                         anyRequest().authenticated())
                 .addFilterBefore(securityFilter.getObject(), UsernamePasswordAuthenticationFilter.class)
-                .formLogin(form -> form.loginPage("/login.html"))
         .build();
     }
 
