@@ -1,244 +1,227 @@
-/* CONTEÚDO PRINCIPAL */
-
-.main {
-    width: min(1200px, 90%);
-
-    margin: 3rem auto;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 2rem;
+/* Reset e Configurações Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
 
-/* TÍTULOS */
+body {
+    background-color: #000000;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 
+/* Header - Idêntico ao Dashboard */
+#abatopo {
+    background-color: #060606;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    border-bottom: 1px solid #111111;
+}
+
+#abatopo img {
+    height: 35px; /* Ajuste conforme o tamanho original da logo */
+    display: block;
+}
+
+#navbar .sublinks {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+#navbar .sublinks a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+#navbar .sublinks a:hover {
+    color: #0066ff;
+}
+
+/* Container Principal */
+.main {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* Títulos Estilizados (Caixa Alta + Sublinhado Azul) */
 .main h2 {
-    text-align: center;
-
-    font-size: 2rem;
     text-transform: uppercase;
-
-    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 24px;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    position: relative;
+    font-weight: bold;
 }
 
 .main h2::after {
-    content: "";
-
-    display: block;
-
-    width: 120px;
-    height: 4px;
-
-    margin: 12px auto 0;
-
-    background-color: #0066ff;
-
-    border-radius: 999px;
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #0052cc;
 }
 
-/* CARD DE REGISTRO */
-
-#registrar-planos {
-    background: rgba(0, 0, 0, 0.8);
-
-    border: 1px solid rgba(0, 102, 255, 0.25);
-    border-radius: 25px;
-
-    padding: 2.5rem;
-
-    box-shadow:
-        0 0 30px rgba(0, 102, 255, 0.2),
-        0 0 80px rgba(0, 102, 255, 0.05);
+/* Cards (Seções de Formulário e Tabela) */
+#registrar-planos, .table-conteiner {
+    background-color: #1a1a1a;
+    border: 1px solid #0d1b2a;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 82, 204, 0.15);
+    padding: 40px;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
+/* Formulário em Grid para manter alinhamento */
 #registrar-planos form {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 1.2rem 2rem;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px 30px;
+    align-items: center;
 }
 
 #registrar-planos p {
-    margin-bottom: 0.5rem;
-
-    font-weight: 600;
-
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0;
 }
 
-/* INPUTS */
-
+/* Inputs, Selects do Formulário */
 #registrar-planos input[type="text"],
 #registrar-planos input[type="number"],
 #registrar-planos select {
     width: 100%;
-
-    padding: 1rem;
-
-    background: rgba(255, 255, 255, 0.05);
-
-    border: 1px solid rgba(0, 102, 255, 0.25);
-    border-radius: 12px;
-
-    color: white;
-
+    background-color: #262626;
+    border: 1px solid #333333;
+    border-radius: 6px;
+    padding: 12px 15px;
+    color: #ffffff;
+    font-size: 14px;
     outline: none;
-
-    transition: 0.3s;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 #registrar-planos input[type="text"]:focus,
 #registrar-planos input[type="number"]:focus,
 #registrar-planos select:focus {
-    border-color: #0066ff;
-
-    box-shadow: 0 0 15px rgba(0, 102, 255, 0.25);
+    border-color: #0052cc;
+    box-shadow: 0 0 5px rgba(0, 82, 204, 0.5);
 }
 
-/* BOTÃO */
-
+/* Botão Salvar Plano */
 #inSalvar {
-    grid-column: 1 / -1;
-
-    margin-top: 1rem;
-
-    padding: 1rem;
-
+    grid-column: span 2;
+    background-color: #0052cc;
+    color: #ffffff;
     border: none;
-    border-radius: 12px;
-
-    background-color: #0066ff;
-
-    color: white;
-
-    font-size: 1rem;
-    font-weight: 700;
-
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
-
-    transition: 0.3s;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
 }
 
 #inSalvar:hover {
-    background-color: #0052cc;
-
-    transform: translateY(-2px);
-
-    box-shadow: 0 10px 20px rgba(0, 102, 255, 0.25);
+    background-color: #0066ff;
 }
 
-/* SEÇÃO DE PLANOS */
-
-#section-planos {
-    display: flex;
-    flex-direction: column;
-
-    gap: 1.5rem;
+/* Correção para que a quebra de linha do HTML não quebre o Grid */
+#registrar-planos form br {
+    display: none;
 }
 
-/* TABELA */
-
+/* Estilização da Tabela Dinâmica */
 .table-conteiner {
+    padding: 0; /* Remove padding para a tabela encostar nas bordas se necessário */
     overflow-x: auto;
-
-    background: rgba(0, 0, 0, 0.8);
-
-    border: 1px solid rgba(0, 102, 255, 0.25);
-    border-radius: 25px;
-
-    padding: 1.5rem;
-
-    box-shadow:
-        0 0 30px rgba(0, 102, 255, 0.2),
-        0 0 80px rgba(0, 102, 255, 0.05);
 }
 
 .tabela {
     width: 100%;
-
     border-collapse: collapse;
+    font-size: 14px;
+    text-align: left;
 }
 
+/* Estilos esperados para serem injetados pelo JS na tabela */
 .tabela th {
-    padding: 1rem;
-
-    text-align: left;
-
-    color: #4d94ff;
-
-    border-bottom: 2px solid rgba(0, 102, 255, 0.3);
+    color: #0066ff;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 20px;
+    border-bottom: 2px solid #111111;
 }
 
 .tabela td {
-    padding: 1rem;
-
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 20px;
+    border-bottom: 1px solid #222222;
+    color: #cccccc;
+    vertical-align: middle;
 }
 
-.tabela tbody tr {
-    transition: 0.3s;
+.tabela tr:last-child td {
+    border-bottom: none;
 }
 
-.tabela tbody tr:hover {
-    background-color: rgba(0, 102, 255, 0.08);
+/* Inputs de visualização e botões dentro da tabela (conforme imagem 1) */
+.tabela input[type="text"],
+.tabela input[type="number"] {
+    background-color: #333333;
+    border: 1px solid #444444;
+    color: #ffffff;
+    padding: 6px 10px;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 120px;
 }
 
-/* PAGINAÇÃO */
-
-#paginacaoPlanos {
-    display: flex;
-    justify-content: center;
-
-    gap: 0.8rem;
-
-    flex-wrap: wrap;
-}
-
-#paginacaoPlanos button {
-    padding: 0.7rem 1rem;
-
-    background: transparent;
-
-    border: 1px solid #0066ff;
-    border-radius: 10px;
-
-    color: white;
-
+/* Botões de Ações na Tabela */
+.tabela button, 
+.tabela .btn-excluir {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #cccccc;
+    padding: 5px 12px;
+    border-radius: 4px;
     cursor: pointer;
-
-    transition: 0.3s;
+    font-size: 12px;
+    font-weight: bold;
+    transition: background-color 0.2s;
 }
 
-#paginacaoPlanos button:hover {
-    background-color: #0066ff;
+.tabela button:hover,
+.tabela .btn-excluir:hover {
+    background-color: #e6e6e6;
 }
 
-#paginacaoPlanos button.ativo {
-    background-color: #0066ff;
-}
-
-/* RESPONSIVIDADE */
-
-@media (max-width: 768px) {
-    #registrar-planos form {
-        grid-template-columns: 1fr;
-    }
-
-    .main h2 {
-        font-size: 1.6rem;
-    }
-
-    .table-conteiner {
-        padding: 1rem;
-    }
-
-    .tabela {
-        min-width: 650px;
-    }
-
-    .tabela th,
-    .tabela td {
-        padding: 0.8rem;
-    }
+/* Paginação abaixo da tabela */
+#paginacaoPlanos {
+    text-align: center;
+    margin-top: 20px;
+    color: #666666;
+    font-size: 14px;
 }
