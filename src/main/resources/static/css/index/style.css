@@ -31,18 +31,6 @@ body {
     line-height: 1.5;
 }
 
-footer {
-    font-size: 16px;
-    height: 6vh;
-    background-color: #0f0f0f;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 15px;
-}
-
-
 
 #abatopo {
     width: 100%;
@@ -465,63 +453,6 @@ button {
     background: none;
 }
 
-#btnInstagram {
-    padding: 1.5%;
-    max-height: 4vh;
-    width: 4%;
-    border-radius: 50px;
-    outline: none;
-    background: linear-gradient(to right, #833ab4, #fd1d1d);
-    color: white;
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row-reverse;
-    gap: 2%;
-    z-index: 999;
-}
-
-#btnInstagram a {
-    text-decoration: none;
-}
-
-#btnInstagram:hover {
-    cursor: pointer;
-    background: linear-gradient(#c13584, #e1306c);
-    transform: scale(1.02);
-    transition: transform 0.1s ease-in;
-}
-
-#btnWhatsapp {
-    padding: 1.5%;
-    max-height: 4vh;
-    width: 4%;
-    border-radius: 50px;
-    outline: none;
-    background-color: #25d366;
-    color: white;
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row-reverse;
-    gap: 2%;
-    z-index: 999;
-}
-
-#btnWhatsapp a {
-    text-decoration: none;
-}
-
-#btnWhatsapp:hover {
-    cursor: pointer;
-    background-color: #128c7e;
-    transform: scale(1.02);
-    transition: transform 0.1s ease-in;
-}
 
 button {
     padding: 1%;
@@ -543,4 +474,82 @@ button {
     gap: 2%;
 }
 
+footer {
+    font-size: 0.9rem;
+    width: 100%;
+    font-size: 78%;
+    padding: 40px 20px 0px 40px;
+    background-color: #000000;
+    color: white;
+    border-top: 1px solid rgba(13, 110, 253, 0.2);
 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+footer h3 {
+    text-align: center;
+    color: #0d6efd;
+}
+
+footer ul {
+    margin-top: 5px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+footer li {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    gap:2%;
+}
+
+footer a {
+    color: #abd1fa;
+    text-decoration: none;
+}
+
+footer #marcaDAgua {
+    font-size: 0.85rem;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#direitos {
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+#conteiner-contato{
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    align-items: center;
+    gap: 8px;
+    width: 230px;
+}
+
+#conteiner-contato p{
+    text-align: left;
+}
+
+#logoLinkdn{
+    width: 20px;
+    height: 20px;
+}
+
+.logo-placeholder{
+    width: 20px;
+    height: 20px;
+}
+#conteiner-contato p{
+    font-size: 1rem;
+    color: #c8c8c8;
+    text-align: left;
+    margin: 0;
+    display: block;
+}

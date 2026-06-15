@@ -74,8 +74,6 @@ footer {
     row-gap: 1.5rem;
 }
 
-/* CARD LOGIN */
-
 #card-login {
     grid-area: login;
 
@@ -111,8 +109,6 @@ footer {
 
     border-radius: 999px;
 }
-
-/* FORMULÁRIO */
 
 form {
     display: flex;
@@ -179,83 +175,11 @@ form input[type="password"]:focus {
     line-height: 1.5;
 }
 
-#contatos {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 5%;
-}
-
-#btnInstagram {
-    padding: 1.5%;
-    max-height: 5vh;
-    width: 15%;
-    border-radius: 50px;
-    outline: none;
-    background: linear-gradient(to right, #833ab4, #fd1d1d);
-    color: white;
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row-reverse;
-    gap: 2%;
-    z-index: 999;
-}
-
-#btnInstagram a {
-    text-decoration: none;
-}
-
-#btnInstagram:hover {
-    cursor: pointer;
-    background: linear-gradient(#c13584, #e1306c);
-    transform: scale(1.02);
-    transition: transform 0.1s ease-in;
-}
-
-#btnWhatsapp {
-    padding: 1.5%;
-    max-height: 5vh;
-    width: 15%;
-    border-radius: 50px;
-    outline: none;
-    background-color: #25d366;
-    color: white;
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row-reverse;
-    gap: 2%;
-    z-index: 999;
-}
-
-#btnWhatsapp a {
-    text-decoration: none;
-}
-
-#btnWhatsapp:hover {
-    cursor: pointer;
-    background-color: #128c7e;
-    transform: scale(1.02);
-    transition: transform 0.1s ease-in;
-}
-
-
 button {
     padding: 1%;
     margin: 1%;
 }
 
-.logoContato {
-    width: 28px;
-    height: 28px;
-}
-
-/* RESPONSIVIDADE */
 
 @media (max-width: 900px) {
     #container {
