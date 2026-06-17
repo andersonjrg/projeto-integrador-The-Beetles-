@@ -6,6 +6,9 @@
     --fonte01: 'Inter', serif;
     --fonte02: 'Oswald', serif;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 * {
     box-sizing: border-box;
